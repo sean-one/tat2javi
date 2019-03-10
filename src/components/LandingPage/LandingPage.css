@@ -1,0 +1,35 @@
+.landing {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 1.5rem;
+}
+
+.enterButton {
+    background-color: black;
+    color: white;
+    padding: 1rem 4rem;
+    border-radius: 0.5rem;
+    border-color: black;
+    margin-bottom: 3.5rem;
+}
+
+.enterButton:hover {
+    background-color: white;
+    color: black;
+}
+
+.landing img {
+    max-width: 100%;
+    max-height: 45rem;
+}
+
+.socialIcons {
+    width: 100%;
+    max-width: 45rem;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 4.5rem;
+}
