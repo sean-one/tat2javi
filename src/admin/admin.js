@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 
+// admin pages
 import AdminCalendar from './adminCalendar';
 import AdminClients from './adminClients';
 import AdminEvents from './adminEvents';
