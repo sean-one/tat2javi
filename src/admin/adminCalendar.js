@@ -74,7 +74,7 @@ class AdminCalendar extends Component {
                             : dateFns.isSameDay(day, selectedDate) ? "selected" : ""
                         }`}
                         key={day}
-                        onclick={() => this.onDateClick(dateFns.parse(cloneDay))}
+                        onClick={() => this.onDateClick(dateFns.parse(cloneDay))}
                     >
                         <span className='number'>{formattedDate}</span>
                         <span className='bg'>{formattedDate}</span>
@@ -96,6 +96,7 @@ class AdminCalendar extends Component {
         this.setState({
             selectedDate: day
         });
+        console.log(day);
     };
     
     nextMonth = () => {
