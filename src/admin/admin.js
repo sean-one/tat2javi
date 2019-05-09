@@ -12,9 +12,9 @@ class Admin extends Component {
             <div>
                 <h1>this is the admin page</h1>
                 <AdminCalendar />
-                <AdminClients />
+                {/* <AdminClients />
                 <AdminEvents />
-                <AdminPost />
+                <AdminPost /> */}
             </div>
         );
     }

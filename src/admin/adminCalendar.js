@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import dateFns from 'date-fns';
 
+import './adminCalendar.css';
+
 class AdminCalendar extends Component {
     state = {
         currentMonth: new Date(),
