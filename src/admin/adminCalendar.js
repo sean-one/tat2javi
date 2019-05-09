@@ -89,6 +89,7 @@ class AdminCalendar extends Component {
             );
             days = [];
         }
+        
         return <div className="body">{rows}</div>;
     }
 
