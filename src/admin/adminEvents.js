@@ -5,6 +5,9 @@ class AdminEvents extends Component {
         return (
             <div>
                 <h1>events posting page</h1>
+                <form>
+                    
+                </form>
             </div>
         );
     }
