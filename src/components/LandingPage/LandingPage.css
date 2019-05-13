@@ -1,4 +1,5 @@
 .landing {
+    background-color: black;
     height: 100vh;
     display: flex;
     flex-direction: column;
@@ -8,28 +9,31 @@
 }
 
 .enterButton {
-    background-color: black;
-    color: white;
+    background-color: white;
+    color: black;
     padding: 1rem 4rem;
     border-radius: 0.5rem;
-    border-color: black;
+    border-color: white;
     margin-bottom: 3.5rem;
 }
 
 .enterButton:hover {
-    background-color: white;
-    color: black;
+    background-color: gray;
+    color: white;
 }
 
 .landing img {
     max-width: 100%;
     max-height: 45rem;
+    padding-top: 2rem;
+    padding-bottom: 5rem;
 }
 
 .socialIcons {
+    color: white;
     width: 100%;
     max-width: 30rem;
     display: flex;
     justify-content: space-between;
-    padding: 0 4.5rem;
+    /* padding: 0 4.5rem; */
 }

@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faFacebook, faInstagram, faTwitterSquare, faSnapchat } from '@fortawesome/free-brands-svg-icons';
 
-import bgLogo from '../../images/t2j_black.svg';
+import bgLogo from '../../images/t2j_white2.png';
 
 //styling
 import './LandingPage.css';

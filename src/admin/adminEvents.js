@@ -43,7 +43,7 @@ class AdminEvents extends Component {
         return (
             <div>
                 <h1>events posting page</h1>
-                <form>
+                <form id="eventForm">
                     <div>
                         <p>Event Name:</p><input type="text" name="event_name" placeholder="Event Name" value={this.state.event_name} onChange={this.handleChange} />
                     </div>
