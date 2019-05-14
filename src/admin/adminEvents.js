@@ -22,20 +22,28 @@ class AdminEvents extends Component {
 
     submitEvent = (event) => {
         event.preventDefault();
-        console.log(`event_name: ${this.state.event_name},
-            event_startDate: ${this.state.event_startDate},
-            event_endDate: ${this.state.event_endDate},
-            event_details: ${this.state.event_details},
-            event_link: ${this.state.event_link},
-            event_image: ${this.state.event_image}`)
-        // axios.post(`${process.env.REACT_APP_HOSTNAME}/api/events`, {
-        //     event_name: this.state.event_name,
-        //     event_startDate: this.state.event_startDate,
-        //     event_endDate: this.state.event_endDate,
-        //     event_details: this.state.event_details,
-        //     event_link: this.state.event_link,
-        //     event_image: this.state.event_image
-        // })
+        axios.post(`${process.env.REACT_APP_HOSTNAME}/api/events`, {
+            event_name: this.state.event_name,
+            event_startDate: this.state.event_startDate,
+            event_endDate: this.state.event_endDate,
+            event_details: this.state.event_details,
+            event_link: this.state.event_link,
+            event_image: this.state.event_image
+        })
+            .then(res => {
+                console.log(res.data);
+            })
+            .catch(err => {
+                console.log('there has been an error', err);
+            });
+        this.setState({
+            event_name: '',
+            event_startDate: '',
+            event_endDate: '',
+            event_details: '',
+            event_link: '',
+            event_image: ''
+        });
 
     }
 
