@@ -60,16 +60,16 @@ class AdminEvents extends Component {
                         <p id="event_name">Event Name:</p><input type="text" name="event_name" placeholder="Event Name" value={this.state.event_name} onChange={this.handleChange} />
                     </div>
                     <div>
-                        <p>Date Start:</p><input type="text" name="event_startDate" placeholder="Start Date" value={this.state.event_startDate} onChange={this.handleChange} />
-                        <p>Date End:</p><input type="text" name="event_endDate" placeholder="End Date" value={this.state.event_endDate} onChange={this.handleChange} />
+                        <p id="event_startDate">Date Start:</p><input type="text" name="event_startDate" placeholder="Start Date" value={this.state.event_startDate} onChange={this.handleChange} />
+                        <p id="event_endDate">Date End:</p><input type="text" name="event_endDate" placeholder="End Date" value={this.state.event_endDate} onChange={this.handleChange} />
                     </div>
-                    <p>Event Discription:</p>
+                    <p id="event_details">Event Discription:</p>
                     <textarea rows="10" cols="30" name="event_details" placeholder="Details about event..." value={this.state.event_details} onChange={this.handleChange} />
                     <div>
-                        <p>Event Link:</p><input type="text" name="event_link" placeholder="https://www.example.com" value={this.state.event_link} onChange={this.handleChange} />
+                        <p id="event_link">Event Link:</p><input type="text" name="event_link" placeholder="https://www.example.com" value={this.state.event_link} onChange={this.handleChange} />
                     </div>
                     <div>
-                        <p>Image Link:</p><input type="text" name="event_image" placeholder="https://www.pictures.com/funny_image.png" value={this.state.event_image} onChange={this.handleChange} />
+                        <p id="event_image">Image Link:</p><input type="text" name="event_image" placeholder="https://www.pictures.com/funny_image.png" value={this.state.event_image} onChange={this.handleChange} />
                     </div>
                     <button type="submit" value="submit" onClick={this.submitEvent}>Submit</button>
                 </form>
