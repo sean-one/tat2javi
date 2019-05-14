@@ -5,12 +5,12 @@ class AdminEvents extends Component {
     constructor() {
         super();
         this.state = {
-            event_name: "",
-            event_startDate: "",
-            event_endDate: "",
-            event_details: "",
-            event_link: "",
-            event_image: ""
+            event_name: '',
+            event_startDate: '',
+            event_endDate: '',
+            event_details: '',
+            event_link: '',
+            event_image: ''
         };
     }
 
@@ -22,29 +22,33 @@ class AdminEvents extends Component {
 
     submitEvent = (event) => {
         event.preventDefault();
-        axios.post(`${process.env.REACT_APP_HOSTNAME}/api/events`, {
-            event_name: this.state.event_name,
-            event_startDate: this.state.event_startDate,
-            event_endDate: this.state.event_endDate,
-            event_details: this.state.event_details,
-            event_link: this.state.event_link,
-            event_image: this.state.event_image
-        })
-            .then(res => {
-                console.log(res.data);
+        if (!this.state.event_name || !this.state.event_startDate || !this.state.event_endDate || !this.state.event_details || !this.state.event_image) {
+            document.getElementById("event_name").style.color = "red";
+            console.log('this is blank');
+        } else {
+            axios.post(`${process.env.REACT_APP_HOSTNAME}/api/events`, {
+                event_name: this.state.event_name,
+                event_startDate: this.state.event_startDate,
+                event_endDate: this.state.event_endDate,
+                event_details: this.state.event_details,
+                event_link: this.state.event_link,
+                event_image: this.state.event_image
             })
-            .catch(err => {
-                console.log('there has been an error', err);
-            });
-        this.setState({
-            event_name: '',
-            event_startDate: '',
-            event_endDate: '',
-            event_details: '',
-            event_link: '',
-            event_image: ''
-        });
-
+                .then(res => {
+                    this.setState({
+                        event_name: '',
+                        event_startDate: '',
+                        event_endDate: '',
+                        event_details: '',
+                        event_link: '',
+                        event_image: ''
+                    });
+                    // console.log(res.data);
+                })
+                .catch(err => {
+                    console.log('there has been an error', err);
+                });
+        }
     }
 
     render() {
@@ -53,7 +57,7 @@ class AdminEvents extends Component {
                 <h1>events posting page</h1>
                 <form id="eventForm">
                     <div>
-                        <p>Event Name:</p><input type="text" name="event_name" placeholder="Event Name" value={this.state.event_name} onChange={this.handleChange} />
+                        <p id="event_name">Event Name:</p><input type="text" name="event_name" placeholder="Event Name" value={this.state.event_name} onChange={this.handleChange} />
                     </div>
                     <div>
                         <p>Date Start:</p><input type="text" name="event_startDate" placeholder="Start Date" value={this.state.event_startDate} onChange={this.handleChange} />
