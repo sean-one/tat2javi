@@ -23,8 +23,16 @@ class AdminEvents extends Component {
     submitEvent = (event) => {
         event.preventDefault();
         if (!this.state.event_name || !this.state.event_startDate || !this.state.event_endDate || !this.state.event_details || !this.state.event_image) {
-            document.getElementById("event_name").style.color = "red";
-            console.log('this is blank');
+            const entries = Object.entries(this.state);
+            for (const [stateKey, stateValue] of entries) {
+                if (!stateValue) {
+                    document.getElementById(stateKey).style.color = "red";
+                } else {
+                    document.getElementById(stateKey).style.color = "black";
+                }
+            }
+            // document.getElementById("event_name").style.color = "red";
+            // console.log(Object.keys(this.state));
         } else {
             axios.post(`${process.env.REACT_APP_HOSTNAME}/api/events`, {
                 event_name: this.state.event_name,
