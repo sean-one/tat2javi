@@ -51,6 +51,10 @@ class AdminEvents extends Component {
                         event_link: '',
                         event_image: ''
                     });
+                    const entries = Object.entries(this.state);
+                    for (const [stateKey, stateValue] of entries) {
+                        document.getElementById(stateKey).style.color = "black";
+                    };
                     // console.log(res.data);
                 })
                 .catch(err => {
