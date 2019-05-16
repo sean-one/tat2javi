@@ -76,3 +76,7 @@ html {
   height: 100%;
   font-size: 1.6rem;
 }
+
+a {
+  text-decoration: none;
+}
