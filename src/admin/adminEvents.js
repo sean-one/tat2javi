@@ -30,9 +30,7 @@ class AdminEvents extends Component {
                 } else {
                     document.getElementById(stateKey).style.color = "black";
                 }
-            }
-            // document.getElementById("event_name").style.color = "red";
-            // console.log(Object.keys(this.state));
+            };
         } else {
             axios.post(`${process.env.REACT_APP_HOSTNAME}/api/events`, {
                 event_name: this.state.event_name,
@@ -55,7 +53,6 @@ class AdminEvents extends Component {
                     for (const [stateKey, stateValue] of entries) {
                         document.getElementById(stateKey).style.color = "black";
                     };
-                    // console.log(res.data);
                 })
                 .catch(err => {
                     console.log('there has been an error', err);
@@ -72,8 +69,8 @@ class AdminEvents extends Component {
                         <p id="event_name">Event Name:</p><input type="text" name="event_name" placeholder="Event Name" value={this.state.event_name} onChange={this.handleChange} />
                     </div>
                     <div>
-                        <p id="event_startDate">Date Start:</p><input type="text" name="event_startDate" placeholder="Start Date" value={this.state.event_startDate} onChange={this.handleChange} />
-                        <p id="event_endDate">Date End:</p><input type="text" name="event_endDate" placeholder="End Date" value={this.state.event_endDate} onChange={this.handleChange} />
+                        <p id="event_startDate">Date Start:</p><input type="text" name="event_startDate" placeholder="mm/dd/yyyy" value={this.state.event_startDate} onChange={this.handleChange} />
+                        <p id="event_endDate">Date End:</p><input type="text" name="event_endDate" placeholder="mm/dd/yyyy" value={this.state.event_endDate} onChange={this.handleChange} />
                     </div>
                     <p id="event_details">Event Discription:</p>
                     <textarea rows="10" cols="30" name="event_details" placeholder="Details about event..." value={this.state.event_details} onChange={this.handleChange} />
