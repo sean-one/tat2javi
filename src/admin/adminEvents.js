@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import dateFns from 'date-fns';
 
 class AdminEvents extends Component {
     constructor() {
@@ -22,7 +23,11 @@ class AdminEvents extends Component {
 
     submitEvent = (event) => {
         event.preventDefault();
-        if (!this.state.event_name || !this.state.event_startDate || !this.state.event_endDate || !this.state.event_details || !this.state.event_image) {
+        if (!dateFns.isValid(new Date(this.state.event_startDate))) {
+            document.getElementById('event_startDate').style.color = "red";
+            console.log('wrong!')
+        };
+        if (!this.state.event_name || !this.state.event_details || !this.state.event_image) {
             const entries = Object.entries(this.state);
             for (const [stateKey, stateValue] of entries) {
                 if (!stateValue) {
