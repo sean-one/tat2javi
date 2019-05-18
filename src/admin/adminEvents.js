@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import dateFns from 'date-fns';
 
+import './adminEvents.css';
+
 class AdminEvents extends Component {
     constructor() {
         super();
@@ -78,43 +80,29 @@ class AdminEvents extends Component {
     submitEvent = (event) => {
         event.preventDefault();
         if (this.validateForm()) {
-            let fields = {};
-            fields["event_name"] = "";
-            fields["event_details"] = "";
-            fields["event_startDate"] = "";
-            fields["event_endDate"] = "";
-            fields["event_link"] = "";
-            fields["event_image"] = "";
-            this.setState({fields:fields});
-            alert("submitted");
+            axios.post(`${process.env.REACT_APP_HOSTNAME}/api/events`, {
+                event_name: this.state.fields.event_name,
+                event_startDate: new Date(this.state.fields.event_startDate).toDateString(),
+                event_endDate: new Date(this.state.fields.event_endDate).toDateString(),
+                event_details: this.state.fields.event_details,
+                event_link: this.state.fields.event_link,
+                event_image: this.state.fields.event_image
+            })
+                .then(res => {
+                    let fields = {};
+                    fields["event_name"] = "";
+                    fields["event_details"] = "";
+                    fields["event_startDate"] = "";
+                    fields["event_endDate"] = "";
+                    fields["event_link"] = "";
+                    fields["event_image"] = "";
+                    this.setState({fields:fields});
+                    alert("submitted");
+                })
+                .catch(err => {
+                    console.log('there has been an error', err);
+                });
         }
-        // else {
-        //     axios.post(`${process.env.REACT_APP_HOSTNAME}/api/events`, {
-        //         event_name: this.state.event_name,
-        //         event_startDate: this.state.event_startDate,
-        //         event_endDate: this.state.event_endDate,
-        //         event_details: this.state.event_details,
-        //         event_link: this.state.event_link,
-        //         event_image: this.state.event_image
-        //     })
-        //         .then(res => {
-        //             this.setState({
-        //                 event_name: '',
-        //                 event_startDate: '',
-        //                 event_endDate: '',
-        //                 event_details: '',
-        //                 event_link: '',
-        //                 event_image: ''
-        //             });
-        //             const entries = Object.entries(this.state);
-        //             for (const [stateKey, stateValue] of entries) {
-        //                 document.getElementById(stateKey).style.color = "black";
-        //             };
-        //         })
-        //         .catch(err => {
-        //             console.log('there has been an error', err);
-        //         });
-        // }
     }
 
     render() {
