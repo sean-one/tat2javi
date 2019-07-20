@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
 // admin pages
-import AdminCalendar from './adminCalendar';
-import AdminClients from './adminClients';
+// import AdminCalendar from './adminCalendar';
+// import AdminClients from './adminClients';
 import AdminEvents from './adminEvents';
-import AdminPost from './adminPost';
+// import AdminPost from './adminPost';
 
 class Admin extends Component {
     render() {
