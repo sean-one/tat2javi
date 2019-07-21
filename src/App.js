@@ -6,6 +6,7 @@ import Header from './components/header/Header';
 import Footer from './components/footer/Footer';
 // import LandingPage from './components/LandingPage/LandingPage';
 import Main from './components/mainbody/Main';
+import About from './components/About/About';
 // import Admin from './admin/admin';
 
 // styling
@@ -15,13 +16,14 @@ class App extends Component {
   render() {
     return (
       <div className='App'>
-        <Header />
-         <div className='content'>
-          {/* <Route exact path='/' component={LandingPage} /> */}
-          <Route exact path='/' component={Main} />
-          {/* <Route path='/admin' component={Admin} /> */}
-         </div>
-        <Footer />
+        <div className='outterWrap'>
+          <Header />
+          <div className='content'>
+            {/* <Route exact path='/' component={About} /> */}
+            <About />
+          </div>
+          <Footer />
+        </div>
       </div>
     );
   }

@@ -1,0 +1,35 @@
+.about {
+    max-width: 95rem;
+}
+
+.mainBio {
+    text-align: justify;
+    font-size: 1.4rem;
+    /* letter-spacing: 0.25px; */
+    line-height: 1.2;
+    padding: 0.5rem 2rem 0.5rem 2rem;
+    padding-top: 2rem;
+    background-color: black;
+    color: white;
+    margin-top: 6.5rem;
+}
+
+.profileImage {
+    width: 17rem;
+    height: auto;
+    float: left;
+    padding-right: 1rem;
+}
+
+.secondImage {
+    float: right;
+    padding: 0.5rem 0 0 1rem;
+}
+
+.signature {
+    margin-top: 2rem;
+    text-align: right;
+    font-size: 3.2rem;
+    padding-bottom: 1.5rem;
+    font-family: 'Sedgwick Ave Display', cursive;
+}
