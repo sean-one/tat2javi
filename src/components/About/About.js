@@ -1,7 +1,7 @@
 import React from 'react';
 
 // styling
-import './About.css';
+import './about.css';
 
 // images
 import profile from '../../images/welcomePicture.jpg';
