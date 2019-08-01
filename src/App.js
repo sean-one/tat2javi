@@ -20,7 +20,7 @@ class App extends Component {
             {/* <Route exact path='/' component={About} /> */}
             {/* <About /> */}
           {/* </div> */}
-          <Footer />
+          {/* <Footer /> */}
         </div>
       </div>
     );

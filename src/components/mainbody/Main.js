@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 
 
 //components
-import Header from '../header/Header';
-import Footer from '../footer/Footer';
+import Header from '../header/header';
+import Footer from '../footer/footer';
 import Menu from '../Menu/Menu';
 
 import profile from '../../images/welcomePicture.jpg';
