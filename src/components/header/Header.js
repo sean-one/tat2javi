@@ -14,12 +14,12 @@ const Header = (props) => {
         <header>
             <div className='navWrap'>
                 <div className='branding'>
-                    <img src={scriptLogo} alt='tat2javi script' />
+                    <Link to='/'><img src={scriptLogo} alt='tat2javi script' /></Link>
                 </div>
                 <div className='menuBar'>
                     <div className='menu'>
                         <span className='links'>
-                            <Link to='/home'>Home</Link>
+                            <Link to='/about'>About</Link>
                         </span>
                         <span className='links'>
                             <Link to='/portfolio'>Portfolio</Link>

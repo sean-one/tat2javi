@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { Route } from 'react-router-dom';
 
-//components
+// components
 import Header from './components/header/header';
+import Categories from './components/categories/categories';
 import About from './components/about/about';
 import Footer from './components/footer/footer';
 // import Admin from './admin/admin';
@@ -14,14 +15,10 @@ class App extends Component {
   render() {
     return (
       <div className='app'>
-        <div className='outterWrap'>
-          <Header />
-          {/* <div className='content'> */}
-            {/* <Route exact path='/' component={About} /> */}
-            {/* <About /> */}
-          {/* </div> */}
-          {/* <Footer /> */}
-        </div>
+        <Header />
+        <Route exact path='/' component={Categories} />
+        <Route path='/about' component={About} />
+        <Footer />
       </div>
     );
   }

@@ -1,0 +1,42 @@
+.categories {
+  display: flex;
+  flex-direction: column;
+  margin-top: 6.5rem;
+  min-height: calc(100vh - 9.5rem);
+  width: 100%;
+  background-color: #000000;
+}
+
+.category {
+  width: 100vw;
+  height: 25rem;
+  filter: grayscale(100%);
+  margin: 0.5rem 0 0.5rem 0;
+  background-color: #000000;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+}
+
+.category:hover {
+  filter: none;
+}
+
+.about, .book {
+  background-image: url("../../images/categories/cvGraff.png");
+}
+
+.portfolio, .contact {
+  background-image: url("../../images/categories/inkzShop.jpg");
+}
+
+.calendar, .shop {
+  background-image: url("../../images/categories/desert74.png");
+}
+
+/* @media only screen and (max-width: 95rem) {
+  .categories {
+    width: 100%;
+  }
+
+} */
