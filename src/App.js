@@ -9,7 +9,7 @@ import Footer from './components/footer/footer';
 // import Admin from './admin/admin';
 
 // styling
-import './app.css';
+import './App.css';
 
 class App extends Component {
   render() {
