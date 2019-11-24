@@ -7,7 +7,7 @@ import Footer from './components/footer/footer';
 // import Admin from './admin/admin';
 
 // styling
-import './App.css';
+import './app.css';
 
 const App = (props) => {
   return (
