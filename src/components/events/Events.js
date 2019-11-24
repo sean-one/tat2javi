@@ -1,13 +1,11 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-class Events extends Component {
-    render() {
-        return (
-            <div>
-                <h1>this is the events tab</h1>
-            </div>
-        )
-    }
+const Events = (props) => {
+    return (
+        <div>
+            <h1>this is the events tab</h1>
+        </div>
+    );
 }
 
 export default Events;

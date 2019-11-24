@@ -28,7 +28,7 @@ const Header = (props) => {
                             <Link to='/calendar'>Calendar</Link>
                         </span>
                         <span className='links'>
-                            <Link to='/book'>Appointment</Link>
+                            <Link to='/appointment'>Appointment</Link>
                         </span>
                         <span className='links'>
                             <Link to='/contact'>Contact</Link>
@@ -37,7 +37,7 @@ const Header = (props) => {
                             <Link to='/shop'>Shop</Link>
                         </span>
                     </div>
-                    <FontAwesomeIcon className='mobileMenu' icon={faBars} size='3x' onClick={props.menuToggle} />
+                    <FontAwesomeIcon className='mobileMenu' icon={faBars} size='2x' onClick={props.menuToggle} />
                 </div>
             </div>
         </header>

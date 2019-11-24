@@ -1,27 +1,22 @@
-import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import React from 'react';
 
 // components
 import Header from './components/header/header';
-import Categories from './components/categories/categories';
-import About from './components/about/about';
+import MainSection from './components/mainSection/mainSection';
 import Footer from './components/footer/footer';
 // import Admin from './admin/admin';
 
 // styling
 import './app.css';
 
-class App extends Component {
-  render() {
-    return (
-      <div className='app'>
-        <Header />
-        <Route exact path='/' component={Categories} />
-        <Route path='/about' component={About} />
-        <Footer />
-      </div>
-    );
-  }
+const App = (props) => {
+  return (
+    <div className='app'>
+      <Header />
+      <MainSection />
+      <Footer />
+    </div>
+  );
 }
 
 export default App;

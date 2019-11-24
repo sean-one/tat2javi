@@ -5,8 +5,8 @@ import './about.css';
 
 const About = (props) => {
     return (
-        <div className='about'>
-            about
+        <div className='aboutWrapper'>
+            <p>this is the about section</p>
         </div>
     );
 }

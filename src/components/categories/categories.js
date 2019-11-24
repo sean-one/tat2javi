@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { Link } from 'react-router-dom';
 
 // styling
@@ -9,32 +9,32 @@ const Categories = (props) => {
         <div className='categories'>
             <Link to='/about'>
                 <div className='category about'>
-                    <p>About</p>
+                    <p className='linkHead'>About</p>
                 </div>
             </Link>
             <Link to='/portfolio'>
                 <div className='category portfolio'>
-                    <p>Portfolio</p>
+                    <p className='linkHead'>Portfolio</p>
                 </div>
             </Link>
             <Link to='/calendar'>
                 <div className='category calendar'>
-                    <p>Calendar</p>
+                    <p className='linkHead'>Calendar</p>
                 </div>
             </Link>
-            <Link to='/book'>
-                <div className='category book'>
-                    <p>Appointment</p>
+            <Link to='/appointment'>
+                <div className='category appointment'>
+                    <p className='linkHead'>Appointment</p>
                 </div>
             </Link>
             <Link to='/contact'>
                 <div className='category contact'>
-                    <p>Contact</p>
+                    <p className='linkHead'>Contact</p>
                 </div>
             </Link>
             <Link to='/shop'>
                 <div className='category shop'>
-                    <p>Shop</p>
+                    <p className='linkHead'>Shop</p>
                 </div>
             </Link>
         </div>

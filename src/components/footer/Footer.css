@@ -1,4 +1,5 @@
 footer {
+    height: var(--footer);
     background-color: lightgray;
     position: relative;
     bottom: 0;

@@ -1,8 +1,6 @@
 .categories {
   display: flex;
   flex-direction: column;
-  margin-top: 6.5rem;
-  min-height: calc(100vh - 9.5rem);
   width: 100%;
   background-color: #000000;
 }
@@ -16,13 +14,25 @@
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
+  display: flex;
+  align-items: flex-end;
 }
 
 .category:hover {
   filter: none;
 }
 
-.about, .book {
+.linkHead {
+  font-weight: bold;
+  color: white;
+  margin-left: 2rem;
+  margin-bottom: 2.5rem;
+  font-size: 2.2rem;
+  text-transform: uppercase;
+  letter-spacing: 3;
+}
+
+.about, .appointment {
   background-image: url("../../images/categories/cvGraff.png");
 }
 
@@ -34,9 +44,10 @@
   background-image: url("../../images/categories/desert74.png");
 }
 
-/* @media only screen and (max-width: 95rem) {
+@media only screen and (max-width: 95rem) {
   .categories {
+    margin-top: 4rem;
     width: 100%;
   }
 
-} */
+}
