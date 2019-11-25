@@ -3,6 +3,13 @@
   --footer: 2.7rem;
 }
 
+@media only screen and (max-width: 95rem) {
+  :root {
+    --header: 4rem;
+  }
+
+}
+
 /* http://meyerweb.com/eric/tools/css/reset/ 
    v2.0 | 20110126
    License: none (public domain)
@@ -47,7 +54,6 @@ table {
 	border-collapse: collapse;
 	border-spacing: 0;
 }
-
 /* template create react app css styling */
 body {
   line-height: 1;
@@ -59,22 +65,18 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
-
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
-
 /* couple more things */
 html {
   font-size: 62.5%;
 }
-
 a {
   text-decoration: none;
   color: inherit;
 }
-
 * {
   box-sizing: border-box;
 }

@@ -1,44 +1,41 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 //fontawesome menu icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 //images and styling
 import scriptLogo from '../../images/black_fullscript.svg';
 import './header.css';
 
 const Header = (props) => {
+    const [openMenu, setMenu] = useState(false);
+
+    const toggleMenu = e => {
+        setMenu(!openMenu)
+        // console.log('click');
+    }
+
     return (
         <header>
             <div className='navWrap'>
                 <div className='branding'>
                     <Link to='/'><img src={scriptLogo} alt='tat2javi script' /></Link>
                 </div>
-                <div className='menuBar'>
-                    <div className='menu'>
-                        <span className='links'>
-                            <Link to='/about'>About</Link>
-                        </span>
-                        <span className='links'>
-                            <Link to='/portfolio'>Portfolio</Link>
-                        </span>
-                        <span className='links'>
-                            <Link to='/calendar'>Calendar</Link>
-                        </span>
-                        <span className='links'>
-                            <Link to='/appointment'>Appointment</Link>
-                        </span>
-                        <span className='links'>
-                            <Link to='/contact'>Contact</Link>
-                        </span>
-                        <span className='links'>
-                            <Link to='/shop'>Shop</Link>
-                        </span>
+                <nav>
+                    <ul className={openMenu ? 'menu mobileMenu' : 'menu'}>
+                        <Link to='/about'><li className='links'>About</li></Link>
+                        <Link to='/portfolio'><li className='links'>Portfolio</li></Link>
+                        <Link to='/calendar'><li className='links'>Calendar</li></Link>
+                        <Link to='/appointment'><li className='links'>Appointment</li></Link>
+                        <Link to='/contact'><li className='links'>Contact</li></Link>
+                        <Link to='/shop'><li className='links'>Shop</li></Link>
+                    </ul>
+                    <div className='mobileIcon' onClick={toggleMenu}>
+                        <FontAwesomeIcon icon={openMenu ? faTimes : faBars} size='2x' onClick={props.menuToggle} />
                     </div>
-                    <FontAwesomeIcon className='mobileMenu' icon={faBars} size='2x' onClick={props.menuToggle} />
-                </div>
+                </nav>
             </div>
         </header>
     );
