@@ -17,6 +17,12 @@ const Header = (props) => {
         // console.log('click');
     }
 
+    const closeMenu = e => {
+        if (openMenu) {
+            setMenu(false);
+        }
+    }
+
     return (
         <header>
             <div className='navWrap'>
@@ -25,12 +31,12 @@ const Header = (props) => {
                 </div>
                 <nav>
                     <ul className={openMenu ? 'menu mobileMenu' : 'menu'}>
-                        <Link to='/about'><li className='links'>About</li></Link>
-                        <Link to='/portfolio'><li className='links'>Portfolio</li></Link>
-                        <Link to='/calendar'><li className='links'>Calendar</li></Link>
-                        <Link to='/appointment'><li className='links'>Appointment</li></Link>
-                        <Link to='/contact'><li className='links'>Contact</li></Link>
-                        <Link to='/shop'><li className='links'>Shop</li></Link>
+                        <Link to='/about'><li onClick={closeMenu} className='links'>About</li></Link>
+                        <Link to='/portfolio'><li onClick={closeMenu} className='links'>Portfolio</li></Link>
+                        <Link to='/calendar'><li onClick={closeMenu} className='links'>Calendar</li></Link>
+                        <Link to='/appointment'><li onClick={closeMenu} className='links'>Appointment</li></Link>
+                        <Link to='/contact'><li onClick={closeMenu} className='links'>Contact</li></Link>
+                        <Link to='/shop'><li onClick={closeMenu} className='links'>Shop</li></Link>
                     </ul>
                     <div className='mobileIcon' onClick={toggleMenu}>
                         <FontAwesomeIcon icon={openMenu ? faTimes : faBars} size='2x' onClick={props.menuToggle} />
