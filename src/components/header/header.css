@@ -23,7 +23,7 @@ header {
     max-height: 7rem;
     width: 25%;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
     align-self: center;
     padding: 0.5rem 2rem;
 }
