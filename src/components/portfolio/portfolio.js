@@ -1,13 +1,20 @@
 import React from 'react';
 
+// components
+import Albums from './albums/albums';
+
 // styling
 import './porfolio.css';
 
 const Portfolio = (props) => {
     return (
-        <div className='portfolio'>
-            this is the portfolio section
-            
+        <div className='container'>
+            <div className='portfolioTitle'>
+                <h1>Portfolio</h1>
+            </div>
+            <div className='album'>
+                <Albums />
+            </div>
         </div>
     );
 }

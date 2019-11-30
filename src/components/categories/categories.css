@@ -2,15 +2,13 @@
   display: flex;
   flex-direction: column;
   width: 100%;
-  background-color: #000000;
 }
 
 .category {
-  width: 100vw;
+  width: 100%;
   height: 28rem;
   filter: grayscale(100%);
   margin: 0.5rem 0 0.5rem 0;
-  background-color: #000000;
   background-repeat: no-repeat;
   background-position: center center;
   background-size: cover;
@@ -24,7 +22,6 @@
 
 .linkHead {
   font-weight: bold;
-  color: white;
   margin-left: 2rem;
   margin-bottom: 2.5rem;
   font-size: 2.2rem;
@@ -44,7 +41,7 @@
   background-image: url("../../images/categories/desert74.png");
 }
 
-@media only screen and (max-width: 95rem) {
+@media only screen and (max-width: 850px) {
   .categories {
     width: 100%;
   }

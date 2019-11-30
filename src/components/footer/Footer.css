@@ -1,9 +1,6 @@
 footer {
     height: var(--footer);
-    background-color: lightgray;
-    position: relative;
-    bottom: 0;
-    left: 0;
+    background-color: #324A5F;
     width: 100%;
     padding: 0.5rem 0;
 }

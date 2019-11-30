@@ -1,20 +1,11 @@
 @import url('https://fonts.googleapis.com/css?family=Sedgwick+Ave+Display');
 
-.aboutWrapper {
-    width: 100%;
-    max-width: 95rem;
-    min-height: 100%;
-    padding-top: 2rem;
-    color: white;
-}
-
 .mainBio {
+    font-size: var(--primary-text);
     text-align: justify;
-    font-size: 1.8rem;
     letter-spacing: 0.2px;
     line-height: 2;
-    padding: 0.5rem 2rem 0.5rem 2rem;
-    color: white;
+    padding: 0 2rem;
 }
 
 .signature {
@@ -25,8 +16,9 @@
     font-family: 'Sedgwick Ave Display', cursive;
 }
 
-@media only screen and (max-width: 95rem) {
+@media only screen and (max-width: 850px) {
     .mainBio {
-        margin-top: 4rem;
+        line-height: 1.35;
+        padding: 0 0.75rem;
     }
 }

@@ -25,9 +25,9 @@ const Header = (props) => {
 
     return (
         <header>
-            <div className='navWrap'>
+            <div className='container navWrap'>
                 <div className='branding'>
-                    <Link to='/'><img src={scriptLogo} alt='tat2javi script' /></Link>
+                    <Link to='/'><img onClick={closeMenu} src={scriptLogo} alt='tat2javi script' /></Link>
                 </div>
                 <nav>
                     <ul className={openMenu ? 'menu mobileMenu' : 'menu'}>
