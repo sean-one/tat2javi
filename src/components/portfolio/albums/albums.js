@@ -5,7 +5,7 @@ import './albums.css';
 
 const Albums = (props) => {
     const [viewLarge, setViewLarge] = useState(false);
-    const [photoId, setPhotoId] = useState('');
+    const [photoId, setPhotoId] = useState(0);
 
     const openPhoto = (e) => {
         setViewLarge(true)
@@ -17,6 +17,31 @@ const Albums = (props) => {
         setViewLarge(false);
     }
 
+    const switchPix = (e) => {
+        switch(e.target.id) {
+            case 'prev':
+                if (document.getElementById(photoId).previousSibling !== null) {
+                    const prev = document.getElementById(photoId).previousSibling.id;
+                    setPhotoId(prev)
+                } else {
+                    const last = document.getElementById(photoId).parentNode.lastChild.id;
+                    setPhotoId(last);
+                }
+                break;
+            case 'next':
+                if (document.getElementById(photoId).nextSibling !== null) {
+                    const next = document.getElementById(photoId).nextSibling.id;
+                    setPhotoId(next);
+                } else {
+                    const first = document.getElementById(photoId).parentNode.firstChild.id;
+                    setPhotoId(first);
+                }
+                break;
+            default:
+                break;
+        }
+    }
+
     return (
         <div className='albumWrapper'>
             {!viewLarge ? '' : 
@@ -25,9 +50,9 @@ const Albums = (props) => {
                         <img src='https://via.placeholder.com/750' alt='full screen view' />
                     </div>
                     <div className='imageControl'>
-                        <span>prev</span>
-                        <span onClick={closeLarge}>close {photoId}</span>
-                        <span>next</span>
+                        <div className='controls' onClick={switchPix} id='prev'>prev</div>
+                        <div className='controls' onClick={closeLarge}>close {photoId}</div>
+                        <div className='controls' onClick={switchPix} id='next'>next</div>
                     </div>
                 </div>
             }
