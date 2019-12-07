@@ -47,7 +47,7 @@ const Albums = (props) => {
             {!viewLarge ? '' : 
                 <div className='fullView'>
                     <div className='fullImage'>
-                        <img src='https://via.placeholder.com/750' alt='full screen view' />
+                        <img src='https://via.placeholder.com/850' alt='full screen view' />
                     </div>
                     <div className='imageControl'>
                         <div className='controls' onClick={switchPix} id='prev'>prev</div>
