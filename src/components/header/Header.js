@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 //fontawesome menu icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faBars, faTimes, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
 //images and styling
 import scriptLogo from '../../images/black_fullscript.svg';

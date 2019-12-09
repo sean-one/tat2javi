@@ -51,6 +51,18 @@
 }
 
 .controls {
+    padding: 0 2.5rem;
     cursor: pointer;
-    width: 33.3%;
+}
+
+.closeMenu {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.closeTab {
+    align-self: flex-start;
+    justify-self: flex-start;
+    
 }

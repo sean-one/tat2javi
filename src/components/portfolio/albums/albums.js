@@ -1,5 +1,9 @@
 import React, { useState } from 'react';
 
+//fontawesome menu icon
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTimes, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
+
 // styling
 import './albums.css';
 
@@ -46,9 +50,18 @@ const Albums = (props) => {
     return (
         <div className='albumWrapper'>
             {!viewLarge ? '' : 
-                <div onClick={closeLarge} className='fullView'>
+                <div className='fullView'>
                     <div className='fullImage'>
+                        <div className='controls'>
+                            <FontAwesomeIcon icon={faChevronLeft} size='5x' onClick={switchPix} />
+                        </div>
                         <img src='https://via.placeholder.com/645x850.png' alt='full screen view' />
+                        <div className='controls'>
+                            <FontAwesomeIcon icon={faChevronRight} size='5x' onClick={switchPix} />
+                        </div>
+                        <div className='controls closeTab'>
+                            <FontAwesomeIcon icon={faTimes} size='2x' onClick={closeLarge} />
+                        </div>
                     </div>
                     {/* <div className='imageControl'>
                         <div className='controls' onClick={switchPix} id='prev'>prev</div>
