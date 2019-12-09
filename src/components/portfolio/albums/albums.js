@@ -10,6 +10,7 @@ const Albums = (props) => {
     const openPhoto = (e) => {
         setViewLarge(true)
         setPhotoId(e.target.id)
+        window.scrollTo(0,0);
         console.log('clickity click!', e.target.id);
     }
 
@@ -45,15 +46,15 @@ const Albums = (props) => {
     return (
         <div className='albumWrapper'>
             {!viewLarge ? '' : 
-                <div className='fullView'>
+                <div onClick={closeLarge} className='fullView'>
                     <div className='fullImage'>
-                        <img src='https://via.placeholder.com/850' alt='full screen view' />
+                        <img src='https://via.placeholder.com/645x850.png' alt='full screen view' />
                     </div>
-                    <div className='imageControl'>
+                    {/* <div className='imageControl'>
                         <div className='controls' onClick={switchPix} id='prev'>prev</div>
                         <div className='controls' onClick={closeLarge}>close {photoId}</div>
                         <div className='controls' onClick={switchPix} id='next'>next</div>
-                    </div>
+                    </div> */}
                 </div>
             }
             <div className='photos'>
