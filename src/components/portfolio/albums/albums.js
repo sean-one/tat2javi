@@ -63,11 +63,6 @@ const Albums = (props) => {
                             <FontAwesomeIcon icon={faTimes} size='2x' onClick={closeLarge} />
                         </div>
                     </div>
-                    {/* <div className='imageControl'>
-                        <div className='controls' onClick={switchPix} id='prev'>prev</div>
-                        <div className='controls' onClick={closeLarge}>close {photoId}</div>
-                        <div className='controls' onClick={switchPix} id='next'>next</div>
-                    </div> */}
                 </div>
             }
             <div className='photos'>
