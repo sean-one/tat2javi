@@ -55,7 +55,7 @@ const Albums = (props) => {
                         <div className='controls'>
                             <FontAwesomeIcon icon={faChevronLeft} size='5x' onClick={switchPix} />
                         </div>
-                        <img src='https://via.placeholder.com/645x850.png' alt='full screen view' />
+                        <img src='https://via.placeholder.com/950x950.png' alt='full screen view' />
                         <div className='controls'>
                             <FontAwesomeIcon icon={faChevronRight} size='5x' onClick={switchPix} />
                         </div>
