@@ -8,7 +8,7 @@ const Events = (props) => {
         <div className='container'>
             <div className='eventCardWrapper'>
                 <div className='eventImage'>
-                    <img src='https://wtepullzone-20131.netdna-ssl.com/wp-content/uploads/2018/03/2019-Musink-Fest.jpg' alt='' />
+                    <img src='https://via.placeholder.com/200x350.png' alt='' />
                 </div>
                 <div className='eventDetails'>
                     <div className='eventHeader'>
