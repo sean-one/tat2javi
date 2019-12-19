@@ -15,6 +15,10 @@ const Calendar = (props) => {
                 </div>
                 <div className='eventsWrapper'>
                     <CalendarEvent />
+                    <CalendarEvent />
+                    <CalendarEvent />
+                    <CalendarEvent />
+                    <CalendarEvent />
                 </div>
             </div>
             

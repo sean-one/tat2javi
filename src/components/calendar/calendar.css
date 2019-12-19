@@ -8,3 +8,7 @@
 .calendarTitle {
     align-self: flex-start;
 }
+
+.eventsWrapper {
+    padding: 3rem 0;
+}
