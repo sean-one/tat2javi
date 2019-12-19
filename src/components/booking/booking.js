@@ -5,8 +5,12 @@ import './booking.css';
 
 const Booking = (props) => {
     return (
-        <div className='appointment'>
-            this is the booking section
+        <div className='container'>
+            <div className='apptWrapper'>
+                <div className='pageTitle'>
+                    <h1>Appointments</h1>
+                </div>
+            </div>
         </div>
     );
 }

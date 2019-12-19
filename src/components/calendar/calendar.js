@@ -10,7 +10,7 @@ const Calendar = (props) => {
     return (
         <div className='container'>
             <div className='calendarWrapper'>
-                <div className='calendarTitle'>
+                <div className='pageTitle'>
                     <h1>Upcoming Events</h1>
                 </div>
                 <div className='eventsWrapper'>

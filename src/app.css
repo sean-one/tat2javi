@@ -14,3 +14,9 @@
   max-width: 90rem;
   min-height: 100%;
 }
+
+.pageTitle {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}

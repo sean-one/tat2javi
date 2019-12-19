@@ -5,10 +5,6 @@
     /* padding: var(--main-padding) 1rem; */
 }
 
-.calendarTitle {
-    align-self: flex-start;
-}
-
 .eventsWrapper {
     padding: 3rem 0;
 }

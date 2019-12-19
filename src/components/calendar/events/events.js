@@ -12,7 +12,7 @@ const Events = (props) => {
                     <div className='e_day'>23</div>
                 </div>
                 <div className='eventImage'>
-                    <img src='https://via.placeholder.com/150x200.png' alt='awesome tattoo event' />
+                    <img src='https://via.placeholder.com/225x300.png' alt='awesome tattoo event' />
                 </div>
                 <div className='eventDetails'>
                     <div className='e_title'>

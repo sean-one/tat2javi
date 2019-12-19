@@ -9,7 +9,7 @@ import './porfolio.css';
 const Portfolio = (props) => {
     return (
         <div className='container'>
-            <div className='portfolioTitle'>
+            <div className='pageTitle'>
                 <h1>Portfolio</h1>
             </div>
             <div className='album'>
