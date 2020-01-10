@@ -34,5 +34,4 @@ const Events = (props) => {
     );
 }
 
-{/* <img src='https://via.placeholder.com/200x350.png' alt='' /> */}
 export default Events;

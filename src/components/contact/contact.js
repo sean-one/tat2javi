@@ -5,9 +5,12 @@ import './contact.css';
 
 const Contact = (props) => {
     return (
-        <div className='contact'>
-            this is the contact section
-            
+        <div className='container'>
+            <div className='contactWrapper'>
+                <div className='pageTitle'>
+                    <h1>Contact</h1>
+                </div>
+            </div>
         </div>
     );
 }

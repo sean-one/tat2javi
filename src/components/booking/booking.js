@@ -10,14 +10,22 @@ const Booking = (props) => {
                 <div className='pageTitle'>
                     <h1>Appointments</h1>
                 </div>
-                <form>
-                    <input name='firstName' type='text' value='' placeholder='First Name' />
-                    <input name='lastName' type='text' value='' placeholder='Last Name' />
-                    <input name='phone' type='text' value='' placeholder='(123)456-7890' />
-                    <input name='email' type='text' value='' placeholder='Email' />
-                    <input name='placement' type='text' value='' placeholder='Tattoo body placement' />
-                    <input name='description' type='text' value='' placeholder='Describe your tattoo idea' />
-                </form>
+                <div className='booking'>
+                    <div className='bookingMedia'>
+                        <div className='bookingImage'>
+                            <img src='https://via.placeholder.com/500x100.png' alt='lowrider and tat2javi' />
+                        </div>
+                        <p>Do you have a tattoo idea that you would like </p>
+                    </div>
+                    <div className='bookingForm'>
+                        <form>
+                            <input name='name' type='text' value='' placeholder='Name' />
+                            <input name='phone' type='number' value='' placeholder='Phone' />
+                            <input name='email' type='text' value='' placeholder='Email' />
+                            <textarea name='description' type='text' value='' placeholder='Describe your tattoo idea' />
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     );

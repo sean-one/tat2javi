@@ -1,0 +1,21 @@
+.booking {
+    display: flex;
+}
+
+.bookingMedia {
+    width: 65%;
+}
+
+.bookingImage {
+    max-width: 100%;
+    margin: 1.5rem;
+}
+
+.bookingImage img {
+    max-width: 100%;
+    height: auto;
+}
+
+.bookingForm {
+    width: 35%;
+}
