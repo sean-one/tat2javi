@@ -24,8 +24,11 @@ header {
     align-self: center;
     padding: 0.5rem 2rem;
 }
+.branding a{
+    display: flex;
+}
 
-.branding img {
+.branding #brandImage{
     max-height: 100%;
     width: auto;
 }

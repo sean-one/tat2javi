@@ -4,6 +4,14 @@ import React, { useState } from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTimes, faChevronLeft, faChevronRight } from '@fortawesome/free-solid-svg-icons';
 
+// images
+import image01 from '../../../images/portfolio/001.png'
+import image02 from '../../../images/portfolio/002.png'
+import image03 from '../../../images/portfolio/003.png'
+import image04 from '../../../images/portfolio/004.png'
+import image05 from '../../../images/portfolio/005.png'
+import image06 from '../../../images/portfolio/006.png'
+
 // styling
 import './albums.css';
 
@@ -66,12 +74,12 @@ const Albums = (props) => {
                 </div>
             }
             <div className='photos'>
-                <img onClick={openPhoto} id='01' src='https://via.placeholder.com/150' alt='placeholder for later' />
-                <img onClick={openPhoto} id='02' src='https://via.placeholder.com/150' alt='placeholder for later' />
-                <img onClick={openPhoto} id='03' src='https://via.placeholder.com/150' alt='placeholder for later' />
-                <img onClick={openPhoto} id='04' src='https://via.placeholder.com/150' alt='placeholder for later' />
-                <img onClick={openPhoto} id='05' src='https://via.placeholder.com/150' alt='placeholder for later' />
-                <img onClick={openPhoto} id='06' src='https://via.placeholder.com/150' alt='placeholder for later' />
+                <img onClick={openPhoto} id='01' src={image01} alt='placeholder for later' />
+                <img onClick={openPhoto} id='02' src={image02} alt='placeholder for later' />
+                <img onClick={openPhoto} id='03' src={image03} alt='placeholder for later' />
+                <img onClick={openPhoto} id='04' src={image04} alt='placeholder for later' />
+                <img onClick={openPhoto} id='05' src={image05} alt='placeholder for later' />
+                <img onClick={openPhoto} id='06' src={image06} alt='placeholder for later' />
                 <img onClick={openPhoto} id='07' src='https://via.placeholder.com/150' alt='placeholder for later' />
                 <img onClick={openPhoto} id='08' src='https://via.placeholder.com/150' alt='placeholder for later' />
                 <img onClick={openPhoto} id='09' src='https://via.placeholder.com/150' alt='placeholder for later' />

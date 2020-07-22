@@ -27,11 +27,6 @@ const Categories = (props) => {
                     <p className='linkHead'>Appointment</p>
                 </div>
             </Link>
-            <Link to='/contact'>
-                <div className='category contact'>
-                    <p className='linkHead'>Contact</p>
-                </div>
-            </Link>
             <Link to='/shop'>
                 <div className='category shop'>
                     <p className='linkHead'>Shop</p>

@@ -3,12 +3,15 @@
 }
 
 .photos {
+    height: 15rem;
     padding-top: var(--main-padding);
     padding-bottom: var(--main-padding);
 }
 
 .photos img {
     margin: 0.25rem;
+    max-height: 100%;
+    width: auto;
 }
 
 .fullView {

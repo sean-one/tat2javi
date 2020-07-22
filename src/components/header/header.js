@@ -14,7 +14,6 @@ const Header = (props) => {
 
     const toggleMenu = e => {
         setMenu(!openMenu)
-        // console.log('click');
     }
 
     const closeMenu = e => {
@@ -27,7 +26,7 @@ const Header = (props) => {
         <header>
             <div className='container navWrap'>
                 <div className='branding'>
-                    <Link to='/'><img onClick={closeMenu} src={scriptLogo} alt='tat2javi script' /></Link>
+                    <Link to='/'><img id='brandImage' onClick={closeMenu} src={scriptLogo} alt='tat2javi script' /></Link>
                 </div>
                 <nav>
                     <ul className={openMenu ? 'menu mobileMenu' : 'menu'}>
@@ -35,7 +34,6 @@ const Header = (props) => {
                         <Link to='/portfolio'><li onClick={closeMenu} className='links'>Portfolio</li></Link>
                         <Link to='/calendar'><li onClick={closeMenu} className='links'>Calendar</li></Link>
                         <Link to='/appointment'><li onClick={closeMenu} className='links'>Appointment</li></Link>
-                        <Link to='/contact'><li onClick={closeMenu} className='links'>Contact</li></Link>
                         <Link to='/shop'><li onClick={closeMenu} className='links'>Shop</li></Link>
                     </ul>
                     <div className='mobileIcon' onClick={toggleMenu}>
