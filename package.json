@@ -28,7 +28,7 @@
     "lodash": "^4.17.21",
     "merge": "^2.1.1",
     "merge-deep": "^3.0.3",
-    "minimist": "1.2.3",
+    "minimist": "1.2.6",
     "node-forge": "^0.10.0",
     "node-notifier": "^8.0.1",
     "path-parse": "^1.0.7",
