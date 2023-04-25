@@ -9,11 +9,9 @@ import Desert74 from '../../images/categories/desert74.png';
 // styling
 const CategoriesStyles = styled.div`
     .categories {
-        margin-top: var(--header);
         width: 100%;
         display: flex;
         flex-direction: column;
-        border: 1px solid red;
         width: 100%;
 
         @media only screen and (max-width: 850px) {

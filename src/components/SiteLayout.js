@@ -33,6 +33,7 @@ const SiteLayoutStyles = styled.div`
         color: #fdffff;
         padding-top: var(--header);
         background-color: black;
+        background-position: left -50px top -50px;
         background-image: url(${Tat2Javi});
         display: flex;
         flex-direction: column;
