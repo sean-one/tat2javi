@@ -2,6 +2,7 @@ import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 
 // components
+import { SiteLayout } from './components/SiteLayout';
 import Header from './components/header/header';
 
 import Categories from './components/categories/categories';
@@ -14,24 +15,26 @@ import Shop from './components/shop/shop';
 
 import Footer from './components/footer/footer';
 
-// styling
-import './app.css';
 
 const App = (props) => {
   return (
-    <div className='app'>
-      <Header />
-      <Routes>
-        <Route exact path='/' element={<Categories />} />
-        <Route path='/about' element={<About />} />
-        <Route path='/portfolio' element={<Portfolio />} />
-        <Route path='/calendar' element={<Calendar />} />
-        <Route path='/appointment' element={<Appointment />} />
-        <Route path='/contact' element={<Contact />} />
-        <Route path='/shop' element={<Shop />} />
-      </Routes>
-      <Footer />
-    </div>
+    <SiteLayout>
+      <div className='app'>
+        <Header />
+        <div className='container'>
+          <Routes>
+            <Route exact path='/' element={<Categories />} />
+            <Route path='/about' element={<About />} />
+            <Route path='/portfolio' element={<Portfolio />} />
+            <Route path='/calendar' element={<Calendar />} />
+            <Route path='/appointment' element={<Appointment />} />
+            <Route path='/contact' element={<Contact />} />
+            <Route path='/shop' element={<Shop />} />
+          </Routes>
+        </div>
+        <Footer />
+      </div>
+    </SiteLayout>
   );
 }
 
