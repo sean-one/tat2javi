@@ -12,6 +12,7 @@ const GlobalStyle = createGlobalStyle`
         --h1text: 3.6rem;
         --nav-links: 1.4rem;
         --text-color: #F5F5F8;
+        --max-container-width: 90rem;
     }
 
     @media only screen and (max-width: 850px) {
@@ -28,10 +29,9 @@ const GlobalStyle = createGlobalStyle`
 const SiteLayoutStyles = styled.div`
     .app {
         width: 100%;
-        /* margin: 0 auto; */
         text-align: center;
         color: #fdffff;
-        /* background-color: #011627; */
+        padding-top: var(--header);
         background-color: black;
         background-image: url(${Tat2Javi});
         display: flex;
@@ -41,11 +41,8 @@ const SiteLayoutStyles = styled.div`
     
     .container {
         width: 100%;
-        margin-top: var(--header);
-        height: calc(100vh - var(--header));
-        /* height: 100vh; */
-        max-width: 90rem;
-        min-height: 100%;
+        min-height: calc(100vh - var(--header) - var(--footer));
+        max-width: var(--max-container-width);
     }
 
     /* heading at the top of each section/page */
@@ -62,14 +59,6 @@ const SiteLayoutStyles = styled.div`
         text-transform: uppercase;
         margin: 1rem 0.5rem;
         width: 100%;
-    }
-
-    .mainSection {
-        margin-top: var(--header);
-        min-height: calc(100vh - var(--header) - var(--footer));
-        width: 100%;
-        display: flex;
-        justify-content: center;
     }
 `;
 
