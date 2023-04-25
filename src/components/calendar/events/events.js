@@ -26,7 +26,7 @@ const Events = (props) => {
                     </div>
                     <div className='e_description'>
                         <p>Ex qui consequat irure qui Lorem ad commodo velit eu. Laborum nostrud mollit mollit non commodo. Fugiat reprehenderit commodo minim laborum quis est commodo ullamco amet enim ullamco magna.</p>
-                        <a href='#'>read more...</a>
+                        <p>read more...</p>
                     </div>
                 </div>
             </div>
