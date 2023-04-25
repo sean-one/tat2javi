@@ -1,21 +1,18 @@
 import React from 'react';
-
-// components
-import Albums from './albums/albums';
+import styled from 'styled-components';
 
 // styling
-import './porfolio.css';
+const PortfolioStyles = styled.div``;
+
 
 const Portfolio = (props) => {
     return (
-        <div className='container'>
+        <PortfolioStyles>
             <div className='pageTitle'>
                 <h1>Portfolio</h1>
             </div>
-            <div className='album'>
-                <Albums />
-            </div>
-        </div>
+            
+        </PortfolioStyles>
     );
 }
 
