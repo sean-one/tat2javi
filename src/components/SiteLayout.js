@@ -53,14 +53,14 @@ const SiteLayoutStyles = styled.div`
         justify-content: flex-start;
     }
 
-    input, textarea {
+    /* input, textarea {
         background-color: #011627;
         border: none;
         border-bottom: 0.02rem solid #364652;
         text-transform: uppercase;
         margin: 1rem 0.5rem;
         width: 100%;
-    }
+    } */
 `;
 
 export const SiteLayout = (props) => {
