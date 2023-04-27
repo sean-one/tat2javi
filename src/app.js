@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import { SiteLayout } from './components/SiteLayout';
 import Header from './components/header/header';
 
+import Landing from './components/landing/landing';
 import Categories from './components/categories/categories';
 import About from './components/about/about';
 import Portfolio from './components/portfolio/portfolio';
@@ -22,7 +23,8 @@ const App = (props) => {
         <Header />
         <div className='container'>
           <Routes>
-            <Route exact path='/' element={<Categories />} />
+            <Route exact path='/' element={<Landing />} />
+            <Route path='/tat2javi' element={<Categories />} />
             <Route path='/about' element={<About />} />
             <Route path='/portfolio' element={<Portfolio />} />
             <Route path='/calendar' element={<Calendar />} />

@@ -12,7 +12,6 @@ const CategoriesStyles = styled.div`
         width: 100%;
         display: flex;
         flex-direction: column;
-        width: 100%;
 
         @media only screen and (max-width: 850px) {
             width: 100%;

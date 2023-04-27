@@ -1,7 +1,8 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import Tat2Javi from '../images/tat2javi.png';
+import t2j from '../images/t2j_dark_50.PNG';
+import Javier from '../images/javier_folded_arms.png';
 
 const GlobalStyle = createGlobalStyle`
     :root {
@@ -32,9 +33,12 @@ const SiteLayoutStyles = styled.div`
         text-align: center;
         color: #fdffff;
         padding-top: var(--header);
-        background-color: black;
+        background-image: url(${t2j});
+        /* background-image: url(${t2j}), url(${Javier}); */
         background-position: left -50px top -50px;
-        background-image: url(${Tat2Javi});
+        /* background-position: left -50px top -50px, center; */
+        /* background-repeat: repeat, no-repeat; */
+        background-color: black;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -44,6 +48,14 @@ const SiteLayoutStyles = styled.div`
         width: 100%;
         min-height: calc(100vh - var(--header) - var(--footer));
         max-width: var(--max-container-width);
+        /* display: flex;
+        justify-content: center;
+        align-items: center; */
+        /* background-image: url(${Javier}); */
+        background-size: cover;
+        background-repeat: no-repeat;
+        background-color: black;
+
     }
 
     /* heading at the top of each section/page */
@@ -53,14 +65,6 @@ const SiteLayoutStyles = styled.div`
         justify-content: flex-start;
     }
 
-    /* input, textarea {
-        background-color: #011627;
-        border: none;
-        border-bottom: 0.02rem solid #364652;
-        text-transform: uppercase;
-        margin: 1rem 0.5rem;
-        width: 100%;
-    } */
 `;
 
 export const SiteLayout = (props) => {

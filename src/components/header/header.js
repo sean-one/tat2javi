@@ -7,16 +7,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
 
 //images and styling
-import scriptLogo from '../../images/black_fullscript.svg';
+import scriptLogo from '../../images/tat2javi_written_100h.PNG';
 
 const HeaderStyles = styled.div`
     header {
         width: 100%;
         height: var(--header);
         position: fixed;
+        font-family: 'Oswald', sans-serif;
         top: 0;
         left: 0;
-        background-color: #324A5F;
+        background-color: #adb5bd;
+        /* background-color: #324A5F; */
         display: flex;
         justify-content: center;
         z-index: 99;
@@ -61,8 +63,10 @@ const HeaderStyles = styled.div`
     }
 
     .links {
-        font-size: var(--nav-links);
-        font-weight: 400;
+        font-size: 18px;
+        /* font-weight: 400; */
+        color: black;
+        /* font-size: var(--nav-links); */
         text-transform: uppercase;
         padding: 1rem 1.5rem;
     }
@@ -89,6 +93,7 @@ const HeaderStyles = styled.div`
 
     .mobileIcon {
         display: none;
+        color: black;
 
         @media only screen and (max-width: 850px) {
             display: block;
@@ -120,11 +125,11 @@ const Header = (props) => {
                     </div>
                     <nav>
                         <ul className={openMenu ? 'menu mobileMenu' : 'menu'}>
-                            <li onClick={navigateToPage} className='links'>About</li>
-                            <li onClick={navigateToPage} className='links'>Portfolio</li>
-                            <li onClick={navigateToPage} className='links'>Calendar</li>
-                            <li onClick={navigateToPage} className='links'>Appointment</li>
-                            <li onClick={navigateToPage} className='links'>Shop</li>
+                            <li onClick={navigateToPage} className='links'>about</li>
+                            <li onClick={navigateToPage} className='links'>portfolio</li>
+                            <li onClick={navigateToPage} className='links'>calendar</li>
+                            <li onClick={navigateToPage} className='links'>appointment</li>
+                            <li onClick={navigateToPage} className='links'>shop</li>
                         </ul>
                         <div className='mobileIcon' onClick={toggleMenu}>
                             <FontAwesomeIcon icon={openMenu ? faTimes : faBars} size='2x' onClick={props.menuToggle} />
