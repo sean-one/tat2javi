@@ -12,7 +12,7 @@ const CategoriesStyles = styled.div`
         width: 100%;
         display: flex;
         flex-direction: column;
-
+        
         @media only screen and (max-width: 850px) {
             width: 100%;
         }
@@ -20,6 +20,7 @@ const CategoriesStyles = styled.div`
 
     .category {
         width: 100%;
+        max-width: var(--max-container-width);
         height: 28rem;
         filter: grayscale(100%);
         margin: 0.5rem 0 0.5rem 0;
@@ -31,7 +32,7 @@ const CategoriesStyles = styled.div`
 
         @media only screen and (max-width: 850px) {
             width: 100%;
-            height: 13.5rem;
+            height: calc((100vh - var(--header) - var(--footer)) * 0.25);
         }
     }
 
@@ -40,6 +41,7 @@ const CategoriesStyles = styled.div`
     }
 
     .linkHead {
+        width: 100%;
         font-weight: bold;
         margin-left: 2rem;
         margin-bottom: 2.5rem;
@@ -77,13 +79,14 @@ const Categories = (props) => {
             <div className='categories'>
                 <div className='category about' onClick={() => navigate('/about')}>
                     <p className='linkHead'>About</p>
+                    
                 </div>
                 <div className='category portfolio' onClick={() => navigate('/portfolio')}>
                     <p className='linkHead'>Portfolio</p>
                 </div>
-                <div className='category calendar' onClick={() => navigate('/calendar')}>
+                {/* <div className='category calendar' onClick={() => navigate('/calendar')}>
                     <p className='linkHead'>Calendar</p>
-                </div>
+                </div> */}
                 <div className='category appointment' onClick={() => navigate('/appointment')}>
                     <p className='linkHead'>Appointment</p>
                 </div>

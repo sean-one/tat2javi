@@ -1,15 +1,28 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import Tat2Javi from '../../images/t2j_white2.png'
+import t2j from '../../images/t2j_dark_50.PNG';
 
 import styled from 'styled-components';
 
+
 const LandingStyles = styled.div`
     .landing {
+        width: 100vw;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background-image: url(${t2j});
+        background-color: black;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        z-index: 100;
+        overflow: auto;
     }
     
     .landingImage {
@@ -24,7 +37,7 @@ const LandingStyles = styled.div`
 
     .enterButton {
         cursor: pointer;
-        margin-top: 2rem;
+        margin-top: 5rem;
         padding: 1rem 2.5rem;
         background-color: black;
         border: 1px solid white;

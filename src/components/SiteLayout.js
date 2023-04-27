@@ -8,11 +8,14 @@ const GlobalStyle = createGlobalStyle`
     :root {
         --header: 7rem;
         --footer: 2.7rem;
+        --header-footer-text: #0f0a0a;
+        --header-footer-font: 'Oswald', sans-serif;
+        --header-footer-background: #adb5bd;
         --main-padding: 2rem;
         --primary-text: 1.8rem;
         --h1text: 3.6rem;
-        --nav-links: 1.4rem;
-        --text-color: #F5F5F8;
+        --nav-links: 18px;
+        --text-color: #fdffff;
         --max-container-width: 90rem;
     }
 
@@ -29,32 +32,21 @@ const GlobalStyle = createGlobalStyle`
 
 const SiteLayoutStyles = styled.div`
     .app {
-        width: 100%;
-        text-align: center;
-        color: #fdffff;
+        color: var(--text-color);
         padding-top: var(--header);
         background-image: url(${t2j});
-        /* background-image: url(${t2j}), url(${Javier}); */
         background-position: left -50px top -50px;
-        /* background-position: left -50px top -50px, center; */
-        /* background-repeat: repeat, no-repeat; */
         background-color: black;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
+        border: 1px solid red;
+        
     }
     
     .container {
-        width: 100%;
+        margin: 0 auto;
         min-height: calc(100vh - var(--header) - var(--footer));
         max-width: var(--max-container-width);
-        /* display: flex;
-        justify-content: center;
-        align-items: center; */
-        /* background-image: url(${Javier}); */
-        background-size: cover;
-        background-repeat: no-repeat;
-        background-color: black;
+        background-color: rgba(0,0,0,0.6);
+        border: 1px solid blue;
 
     }
 
@@ -63,6 +55,14 @@ const SiteLayoutStyles = styled.div`
         width: 100%;
         display: flex;
         justify-content: flex-start;
+
+        h1 {
+            font-size: var(--h1text);
+            color: #759aab;
+            font-weight: bold;
+            padding: 2rem 0.75rem;
+            letter-spacing: 0.5rem;
+        }
     }
 
 `;

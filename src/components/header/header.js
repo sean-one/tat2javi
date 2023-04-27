@@ -14,11 +14,11 @@ const HeaderStyles = styled.div`
         width: 100%;
         height: var(--header);
         position: fixed;
-        font-family: 'Oswald', sans-serif;
+        font-family: var(--header-footer-font);
+        color: var(--header-footer-text);
         top: 0;
         left: 0;
-        background-color: #adb5bd;
-        /* background-color: #324A5F; */
+        background-color: var(--header-footer-background);
         display: flex;
         justify-content: center;
         z-index: 99;
@@ -63,10 +63,8 @@ const HeaderStyles = styled.div`
     }
 
     .links {
-        font-size: 18px;
-        /* font-weight: 400; */
-        color: black;
-        /* font-size: var(--nav-links); */
+        cursor: pointer;
+        font-size: var(--nav-links);
         text-transform: uppercase;
         padding: 1rem 1.5rem;
     }
@@ -127,7 +125,7 @@ const Header = (props) => {
                         <ul className={openMenu ? 'menu mobileMenu' : 'menu'}>
                             <li onClick={navigateToPage} className='links'>about</li>
                             <li onClick={navigateToPage} className='links'>portfolio</li>
-                            <li onClick={navigateToPage} className='links'>calendar</li>
+                            {/* <li onClick={navigateToPage} className='links'>calendar</li> */}
                             <li onClick={navigateToPage} className='links'>appointment</li>
                             <li onClick={navigateToPage} className='links'>shop</li>
                         </ul>

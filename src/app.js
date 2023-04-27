@@ -9,7 +9,7 @@ import Landing from './components/landing/landing';
 import Categories from './components/categories/categories';
 import About from './components/about/about';
 import Portfolio from './components/portfolio/portfolio';
-import Calendar from './components/calendar/calendar';
+// import Calendar from './components/calendar/calendar';
 import Appointment from './components/appointment/appointment';
 import Shop from './components/shop/shop';
 
@@ -27,7 +27,7 @@ const App = (props) => {
             <Route path='/tat2javi' element={<Categories />} />
             <Route path='/about' element={<About />} />
             <Route path='/portfolio' element={<Portfolio />} />
-            <Route path='/calendar' element={<Calendar />} />
+            {/* <Route path='/calendar' element={<Calendar />} /> */}
             <Route path='/appointment' element={<Appointment />} />
             <Route path='/shop' element={<Shop />} />
           </Routes>
