@@ -10,7 +10,6 @@ const GlobalStyle = createGlobalStyle`
         --header-footer-text: #0f0a0a;
         --header-footer-font: 'Oswald', sans-serif;
         --header-footer-background: #adb5bd;
-        --main-padding: 2rem;
         --primary-text: 1.8rem;
         --h1text: 3.6rem;
         --nav-links: 18px;
@@ -21,7 +20,6 @@ const GlobalStyle = createGlobalStyle`
     @media only screen and (max-width: 850px) {
         :root {
             --header: 5.5rem;
-            --main-padding: 0.75rem;
             --primary-text: 1.6rem;
             --h1text: 2.2rem;
             --nav-links: 2.8rem;

@@ -10,7 +10,6 @@ const CalendarStyles = styled.div`
         display: flex;
         flex-direction: column;
         width: 100%;
-        /* padding: var(--main-padding) 1rem; */
     }
 
     .eventsWrapper {
