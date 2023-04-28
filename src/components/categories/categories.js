@@ -38,9 +38,9 @@ const CategoriesStyles = styled.div`
         }
     }
 
-    /* .category:hover {
+    .category:hover {
         filter: none;
-    } */
+    }
 
     .linkHead {
         background-color: rgba(0,0,0,0.6);
