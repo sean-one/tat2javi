@@ -17,7 +17,7 @@ const Footer = () => {
     return (
         <FooterStyles>
             <footer>
-                <p>&copy; 2018 Tat2Javi</p>
+                <p>&copy; 2023 Tat2Javi</p>
             </footer>
         </FooterStyles>
     );

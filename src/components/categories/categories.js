@@ -2,9 +2,10 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import CVGraff from '../../images/categories/cvGraff.png';
-import InkzShop from '../../images/categories/inkzShop.jpg';
-import Desert74 from '../../images/categories/desert74.png';
+import about_link_image from '../../images/categories/about_image_link.png';
+import portfolio_link_image from '../../images/categories/portfolio_image_link.png';
+import appointment_link_image from '../../images/categories/appointment_image_link.png';
+import shop_link_image from '../../images/categories/shop_image_link.png';
 
 // styling
 const CategoriesStyles = styled.div`
@@ -19,6 +20,7 @@ const CategoriesStyles = styled.div`
     }
 
     .category {
+        cursor: pointer;
         width: 100%;
         max-width: var(--max-container-width);
         height: 28rem;
@@ -41,30 +43,36 @@ const CategoriesStyles = styled.div`
     }
 
     .linkHead {
-        width: 100%;
+        background-color: rgba(0,0,0,0.6);
+        padding: 0.5rem 1rem;
+        border-radius: 5px;
         font-weight: bold;
         margin-left: 2rem;
         margin-bottom: 2.5rem;
-        font-size: 2.2rem;
+        font-size: var(--nav-links);
+        color: var(--header-footer-background);
         text-transform: uppercase;
         letter-spacing: 3;
 
         @media only screen and (max-width: 850px) {
             margin-bottom: 1.5rem;
-            font-size: 2rem;
         }
     }
 
-    .about, .appointment {
-        background-image: url(${CVGraff});
+    .about {
+        background-image: url(${about_link_image});
+    }
+    
+    .appointment {
+        background-image: url(${appointment_link_image});
     }
 
-    .portfolio, .contact {
-        background-image: url(${InkzShop});
+    .portfolio {
+        background-image: url(${portfolio_link_image})
     }
-
-    .calendar, .shop {
-        background-image: url(${Desert74});
+    
+    .shop {
+        background-image: url(${shop_link_image});
     }
 
 `;

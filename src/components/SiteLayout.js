@@ -2,7 +2,6 @@ import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
 import t2j from '../images/t2j_dark_50.PNG';
-import Javier from '../images/javier_folded_arms.png';
 
 const GlobalStyle = createGlobalStyle`
     :root {
@@ -37,8 +36,6 @@ const SiteLayoutStyles = styled.div`
         background-image: url(${t2j});
         background-position: left -50px top -50px;
         background-color: black;
-        border: 1px solid red;
-        
     }
     
     .container {
@@ -46,8 +43,6 @@ const SiteLayoutStyles = styled.div`
         min-height: calc(100vh - var(--header) - var(--footer));
         max-width: var(--max-container-width);
         background-color: rgba(0,0,0,0.6);
-        border: 1px solid blue;
-
     }
 
     /* heading at the top of each section/page */
