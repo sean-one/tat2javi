@@ -8,6 +8,12 @@ const AboutStyles = styled.div`
     .aboutWrapper {
         display: flex;
         justify-content: space-between;
+
+        @media only screen and (max-width: 850px) {
+            flex-direction: column-reverse;
+            align-items: center;
+
+        }
     }
 
     .aboutImage {
@@ -16,7 +22,6 @@ const AboutStyles = styled.div`
         display: flex;
         justify-content: center;
         align-items: center;
-
 
         img {
             width: 100%;
@@ -35,8 +40,10 @@ const AboutStyles = styled.div`
         line-height: 2;
 
         @media only screen and (max-width: 850px) {
+            max-width: 100%;
+            text-align: center;
             line-height: 1.35;
-            padding: 0 0.75rem;
+            padding: 2rem 1rem 0;
         }
     }
 `;
