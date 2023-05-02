@@ -10,7 +10,7 @@ import Categories from './components/categories/categories';
 import About from './components/about/about';
 import Portfolio from './components/portfolio/portfolio';
 // import Calendar from './components/calendar/calendar';
-import Appointment from './components/appointment/appointment';
+import Booking from './components/booking/booking';
 import Shop from './components/shop/shop';
 
 import Footer from './components/footer/footer';
@@ -28,7 +28,7 @@ const App = (props) => {
             <Route path='/about' element={<About />} />
             <Route path='/portfolio' element={<Portfolio />} />
             {/* <Route path='/calendar' element={<Calendar />} /> */}
-            <Route path='/appointment' element={<Appointment />} />
+            <Route path='/booking' element={<Booking />} />
             <Route path='/shop' element={<Shop />} />
           </Routes>
         </div>

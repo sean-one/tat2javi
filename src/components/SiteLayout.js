@@ -19,8 +19,8 @@ const GlobalStyle = createGlobalStyle`
 
     @media only screen and (max-width: 850px) {
         :root {
-            --header: 5.5rem;
-            --primary-text: 1.6rem;
+            --header: 5rem;
+            /* --primary-text: 1.6rem; */
             --h1text: 2.2rem;
             --nav-links: 2.8rem;
         }

@@ -126,7 +126,7 @@ const Header = (props) => {
                             <li onClick={navigateToPage} className='links'>about</li>
                             <li onClick={navigateToPage} className='links'>portfolio</li>
                             {/* <li onClick={navigateToPage} className='links'>calendar</li> */}
-                            <li onClick={navigateToPage} className='links'>appointment</li>
+                            <li onClick={navigateToPage} className='links'>booking</li>
                             <li onClick={navigateToPage} className='links'>shop</li>
                         </ul>
                         <div className='mobileIcon' onClick={toggleMenu}>
