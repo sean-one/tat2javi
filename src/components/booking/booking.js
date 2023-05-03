@@ -68,24 +68,23 @@ const Booking = (props) => {
 
     const submitAppointment = async (data) => {
         try {
-            // console.log(data)
-            if(!data.clientname) {
-                setError('clientname', { message: 'required field' })
+            const requiredFields = ['clientname', 'clientphone', 'clientemail', 'clientdescription']
+            const errorMessages = {
+                clientname: 'required field',
+                clientphone: 'required field',
+                clientemail: 'required field',
+                clientdescription: 'required field',
             }
 
-            if(!data.clientphone) {
-                setError('clientphone', { message: 'required field' })
-            }
-
-            if(!data.clientemail) {
-                setError('clientemail', { message: 'required field' })
-            }
-
-            if(!data.clientdescription) {
-                setError('clientdescription', { message: 'required field' })
-            }
+            requiredFields.forEach((field) => {
+                if(!data[field]) {
+                    setError(field, { message: errorMessages[field] })
+                }
+            })
+            console.log(data)
 
             
+
         } catch(error) {
             console.log(error)
         }
@@ -111,14 +110,14 @@ const Booking = (props) => {
                         type='number'
                         placeholder='Phone'
                     />
-                    <div>{errors.clientphone?.message}</div>
+                    {errors.clientphone ? <div>{errors.clientphone?.message}</div> : null}
 
                     <input
                         {...register('clientemail')}
                         type='text'
                         placeholder='Email'
                     />
-                    <div>{errors.clientemail?.message}</div>
+                    {errors.clientemail ? <div>{errors.clientemail?.message}</div> : null}
 
                     <textarea
                         {...register('clientdescription')}
@@ -126,15 +125,14 @@ const Booking = (props) => {
                         rows='10'
                         placeholder='Describe your tattoo idea and attach a reference image'
                     />
-                    <div>{errors.clientdescription?.message}</div>
+                    {errors.clientdescription ? <div>{errors.clientdescription?.message}</div> : null}
 
-                    {/* <input id='referenceImage'
+                    <input id='referenceImage'
                         {...register('referenceImage')}
                         type='file'
                         accept='image/*'
-                        onChange={}
-                    /> */}
-                    {/* <div>{errors.referenceImage?.message}</div> */}
+                    />
+                    {errors.referenceImage ? <div>{errors.referenceImage?.message}</div> : null}
 
                     <button type='submit'>Submit</button>
                 </form>
