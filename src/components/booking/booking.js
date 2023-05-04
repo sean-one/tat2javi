@@ -1,7 +1,6 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
-// import useImagePreview from '../../hooks/useImagePreview';
 
 // styling
 const BookingStyles = styled.div`
@@ -10,7 +9,7 @@ const BookingStyles = styled.div`
         border: 1px solid red;
     }
 
-    .appointmentForm {
+    .bookingForm {
         width: 100%;
         display: flex;
         flex-direction: column;
@@ -27,6 +26,12 @@ const BookingStyles = styled.div`
             margin: 0.5rem 1rem;
             padding: 0.5rem 1rem;
         }
+    }
+
+    .formError {
+        color: #B90504;
+        /* color: #990100; */
+        padding-left: 1.5rem;
     }
 
     .uploadPreview {
@@ -55,15 +60,8 @@ const BookingStyles = styled.div`
 
 
 const Booking = (props) => {
-    // const { editImage, imagePreview, canvas } = useImagePreview();
     const { register, handleSubmit, setError, formState: { errors } } = useForm({
         mode: 'onBlur',
-        // defaultValues: {
-        //     clientname: '',
-        //     clientphone: '',
-        //     clientemail: '',
-        //     clientdescription: ''
-        // }
     })
 
     const submitAppointment = async (data) => {
@@ -82,13 +80,9 @@ const Booking = (props) => {
                 }
             })
             console.log(data)
-
-            
-
         } catch(error) {
             console.log(error)
         }
-        // console.log(data)
     }
 
     console.log(errors)
@@ -96,28 +90,28 @@ const Booking = (props) => {
         <BookingStyles>
             <div className='booking'>
                 <p>Do you have a tattoo idea that you would like </p>
-                <form onSubmit={handleSubmit(submitAppointment)} className='appointmentForm'>
+                <form onSubmit={handleSubmit(submitAppointment)} className='bookingForm'>
                     
                     <input
                         {...register('clientname')}
                         type='text'
                         placeholder='Name'
                     />
-                    {errors.clientname ? <div>{errors.clientname?.message}</div> : null}
+                    {errors.clientname ? <div className='formError'>{errors.clientname?.message}</div> : null}
 
                     <input
                         {...register('clientphone')}
                         type='number'
                         placeholder='Phone'
                     />
-                    {errors.clientphone ? <div>{errors.clientphone?.message}</div> : null}
+                    {errors.clientphone ? <div className='formError'>{errors.clientphone?.message}</div> : null}
 
                     <input
                         {...register('clientemail')}
                         type='text'
                         placeholder='Email'
                     />
-                    {errors.clientemail ? <div>{errors.clientemail?.message}</div> : null}
+                    {errors.clientemail ? <div className='formError'>{errors.clientemail?.message}</div> : null}
 
                     <textarea
                         {...register('clientdescription')}
@@ -125,14 +119,14 @@ const Booking = (props) => {
                         rows='10'
                         placeholder='Describe your tattoo idea and attach a reference image'
                     />
-                    {errors.clientdescription ? <div>{errors.clientdescription?.message}</div> : null}
+                    {errors.clientdescription ? <div className='formError'>{errors.clientdescription?.message}</div> : null}
 
                     <input id='referenceImage'
                         {...register('referenceImage')}
                         type='file'
                         accept='image/*'
                     />
-                    {errors.referenceImage ? <div>{errors.referenceImage?.message}</div> : null}
+                    {errors.referenceImage ? <div className='formError'>{errors.referenceImage?.message}</div> : null}
 
                     <button type='submit'>Submit</button>
                 </form>
