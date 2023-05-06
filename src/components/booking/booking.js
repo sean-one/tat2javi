@@ -2,6 +2,7 @@ import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
 import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import axios from 'axios';
 import { v4 as uuidv4 } from 'uuid'
 
 // styling
@@ -110,15 +111,21 @@ const Booking = (props) => {
             const command = new PutObjectCommand(params);
             await s3.send(command);
             const url = `${process.env.REACT_APP_AWS_IMAGE_LINK}${fileName}`;
-            console.log('uploaded')
-            console.log(url)
+
+            delete data['referenceImage']
+            data['imagelink'] = url
+
+            const response = await axios({
+                method : 'post',
+                url : process.env.REACT_APP_AWS_LAMBDA,
+                data : {...data},
+            })
+
+            console.log(response)
 
             
         } catch(error) {
-            // console.log(error)
-            console.log(`${error.Code}: ${error.name}`)
-            console.log(`message: ${error.message}`)
-            // console.log(Object.keys(error))
+            console.log(error)
         }
     }
 
