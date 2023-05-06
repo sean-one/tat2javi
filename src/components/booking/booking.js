@@ -1,6 +1,8 @@
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import styled from 'styled-components';
+import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+import { v4 as uuidv4 } from 'uuid'
 
 // styling
 const BookingStyles = styled.div`
@@ -60,41 +62,77 @@ const BookingStyles = styled.div`
 
 
 const Booking = (props) => {
-    const { register, handleSubmit, setError, formState: { errors } } = useForm({
+    const { register, handleSubmit, setError, clearErrors, formState: { errors } } = useForm({
         mode: 'onBlur',
     })
 
     const submitAppointment = async (data) => {
+        console.log(data.referenceImage)
         try {
             const requiredFields = ['clientname', 'clientphone', 'clientemail', 'clientdescription']
             const errorMessages = {
-                clientname: 'required field',
-                clientphone: 'required field',
-                clientemail: 'required field',
-                clientdescription: 'required field',
+                clientname: 'name is required',
+                clientphone: 'contact number is required',
+                clientdescription: 'tattoo description is required',
             }
 
             requiredFields.forEach((field) => {
-                if(!data[field]) {
+                if(!data[field] && (field !== 'email')) {
                     setError(field, { message: errorMessages[field] })
                 }
             })
-            console.log(data)
+
+            if(data.referenceImage.length <= 0) {
+                setError('referenceImage', { message: 'reference image is required' })
+            }
+
+            const imageToUpload = data.referenceImage[0]
+
+            const s3 = new S3Client({
+                region: process.env.REACT_APP_AWS_REGION,
+                credentials: {
+                    accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+                    secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+                },
+            });
+
+            const fileExtension = imageToUpload.name.split('.').pop();
+            const fileName = `${data.clientname}_${uuidv4()}.${fileExtension}`;
+
+            const params = {
+                Bucket: process.env.REACT_APP_S3_BUCKET_NAME,
+                Key: fileName,
+                Body: imageToUpload,
+                ContentType: imageToUpload.type,
+                // ACL: 'public-read',
+            };
+
+            const command = new PutObjectCommand(params);
+            await s3.send(command);
+            const url = `${process.env.REACT_APP_AWS_IMAGE_LINK}${fileName}`;
+            console.log('uploaded')
+            console.log(url)
+
+            
         } catch(error) {
-            console.log(error)
+            // console.log(error)
+            console.log(`${error.Code}: ${error.name}`)
+            console.log(`message: ${error.message}`)
+            // console.log(Object.keys(error))
         }
     }
 
-    console.log(errors)
+
     return (
         <BookingStyles>
             <div className='booking'>
                 <p>Do you have a tattoo idea that you would like </p>
-                <form onSubmit={handleSubmit(submitAppointment)} className='bookingForm'>
+                <form onSubmit={handleSubmit(submitAppointment)} className='bookingForm' encType='multipart/form-data'>
                     
                     <input
                         {...register('clientname')}
                         type='text'
+                        onFocus={() => clearErrors('clientname')}
                         placeholder='Name'
                     />
                     {errors.clientname ? <div className='formError'>{errors.clientname?.message}</div> : null}
@@ -102,6 +140,7 @@ const Booking = (props) => {
                     <input
                         {...register('clientphone')}
                         type='number'
+                        onFocus={() => clearErrors('clientphone')}
                         placeholder='Phone'
                     />
                     {errors.clientphone ? <div className='formError'>{errors.clientphone?.message}</div> : null}
@@ -109,6 +148,7 @@ const Booking = (props) => {
                     <input
                         {...register('clientemail')}
                         type='text'
+                        onFocus={() => clearErrors('clientemail')}
                         placeholder='Email'
                     />
                     {errors.clientemail ? <div className='formError'>{errors.clientemail?.message}</div> : null}
@@ -116,6 +156,7 @@ const Booking = (props) => {
                     <textarea
                         {...register('clientdescription')}
                         type='text'
+                        onFocus={() => clearErrors('clientdescription')}
                         rows='10'
                         placeholder='Describe your tattoo idea and attach a reference image'
                     />
@@ -124,6 +165,7 @@ const Booking = (props) => {
                     <input id='referenceImage'
                         {...register('referenceImage')}
                         type='file'
+                        onFocus={() => clearErrors('referenceImage')}
                         accept='image/*'
                     />
                     {errors.referenceImage ? <div className='formError'>{errors.referenceImage?.message}</div> : null}
