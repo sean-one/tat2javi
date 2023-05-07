@@ -1,6 +1,8 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
+import * as yup from 'yup';
+import { yupResolver } from '@hookform/resolvers/yup';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
@@ -23,7 +25,7 @@ const BookingStyles = styled.div`
             background-color: black;
             border: none;
             color: var(--header-footer-background);
-            font-size: var(--nav-links);
+            font-size: 18px;
             font-family: var(--header-footer-font);
             letter-spacing: 0.1rem;
             border-bottom: 1px solid #364652;
@@ -62,12 +64,51 @@ const BookingStyles = styled.div`
     }
 `;
 
+const bookingSchema = yup.object().shape({
+    clientname: yup
+        .string()
+        .required("Name is required")
+        .max(50, "Name must be less than 50 characters")
+        .matches(/^[a-zA-Z]+(\s[a-zA-Z]+)?$/, { message: "Name must only contain alphabetical characters", excludeEmptyString: true }),
 
+    clientphone: yup
+        .string()
+        .required('Phone number is required')
+        .matches(
+            /^[0-9]{10}$/,
+            "Phone number must be a valid 10-digit number (e.g. 123-456-7890)"
+        ),
+
+    clientemail: yup
+        .string()
+        .email("Email must be a valid email address"),
+    
+    clientdescription: yup
+        .string()
+        .required('Tattoo description is required')
+        .max(250, "Description must be less than 250 characters"),
+
+    referenceImage: yup
+        .mixed()
+        .required("An image is required")
+        .test(
+            "fileSize",
+            "File size must be less than 2MB",
+            (value) => !value || (value && value.size <= 2000000)
+        )
+        .test(
+            "fileType",
+            "File must be a valid image type (e.g. jpeg, png, webp)",
+            (value) => !value || (value && ["image/jpeg", "image/png", "images/webp"].includes(value.type))
+        ),
+    
+})
 
 const Booking = (props) => {
     let navigate = useNavigate()
     const { register, handleSubmit, setError, clearErrors, reset, formState: { errors } } = useForm({
         mode: 'onBlur',
+        resolver: yupResolver(bookingSchema),
     })
 
     const submitAppointment = async (data) => {
