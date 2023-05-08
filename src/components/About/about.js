@@ -53,9 +53,6 @@ const About = (props) => {
     return (
         <AboutStyles>
             <div className='aboutWrapper'>
-                {/* <div className='pageTitle'>
-                    <h1>About</h1>
-                </div> */}
                 <div className='aboutImage'>
                     <img src={Javier} alt='Tat2Javi standing with his arms crossed' />
                 </div>

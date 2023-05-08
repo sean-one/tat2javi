@@ -21,9 +21,7 @@ const Calendar = (props) => {
     return (
         <CalendarStyles>
             <div className='calendarWrapper'>
-                <div className='pageTitle'>
-                    <h1>Upcoming Events</h1>
-                </div>
+                <h1>Upcoming Events</h1>
                 <div className='eventsWrapper'>
                     <CalendarEvent />
                     <CalendarEvent />

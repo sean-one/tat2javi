@@ -8,7 +8,7 @@ const FooterStyles = styled.div`
         text-align: center;
         font-family: var(--header-footer-font);
         height: var(--footer);
-        color: var(--header-footer-text);
+        color: var(--header-footer-text-color);
         background-color: var(--header-footer-background);
     }
 `;

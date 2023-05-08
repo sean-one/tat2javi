@@ -22,22 +22,26 @@ const BookingStyles = styled.div`
         flex-direction: column;
 
         input, textarea {
-            background-color: black;
+            background-color: var(--input-background);
             border: none;
-            color: var(--header-footer-background);
-            font-size: 18px;
+            border-radius: 5px;
+            color: var(--text-color);
+            font-size: 1.8rem;
             font-family: var(--header-footer-font);
             letter-spacing: 0.1rem;
-            border-bottom: 1px solid #364652;
-            /* text-transform: uppercase; */
-            margin: 0.5rem 1rem;
+            border-bottom: 1px solid var(--text-color);
+            margin: 0.5rem 0;
             padding: 0.5rem 1rem;
+            
+            ::placeholder {
+                color: var(--header-footer-background);
+            }
         }
     }
 
     .formError {
         color: #B90504;
-        /* color: #990100; */
+        font-weight: bold;
         padding-left: 1.5rem;
     }
 
@@ -57,7 +61,7 @@ const BookingStyles = styled.div`
         margin-top: 2rem;
         max-width: 10rem;
         background-color: var(--header-footer-background);
-        color: var(--header-footer-text);
+        color: var(--header-footer-text-color);
         font-family: var(--header-footer-font);
         padding: 1rem 2rem;
         border-radius: 5px;
@@ -90,23 +94,24 @@ const bookingSchema = yup.object().shape({
 
     referenceImage: yup
         .mixed()
-        .required("An image is required")
-        .test(
-            "fileSize",
-            "File size must be less than 2MB",
-            (value) => !value || (value && value.size <= 2000000)
-        )
-        .test(
-            "fileType",
-            "File must be a valid image type (e.g. jpeg, png, webp)",
-            (value) => !value || (value && ["image/jpeg", "image/png", "images/webp"].includes(value.type))
-        ),
-    
+        .test('fileAttached', "reference image is required", (value) => {
+            if(value.length === 0) {
+                return false
+            }
+            return true; // continue validation if file has been selected
+        })
+        .test("fileSize", "Image file size is too large", (value) => {
+            if ((value.length > 0) && value[0]) {
+                return value[0].size <= 2 * 1024 * 1024; // 2MB
+            }
+            return false; // fail validation if no file is selected
+        })
+        .required("Please select an image file"),
 })
 
 const Booking = (props) => {
     let navigate = useNavigate()
-    const { register, handleSubmit, setError, clearErrors, reset, formState: { errors } } = useForm({
+    const { register, handleSubmit, setError, reset, formState: { errors } } = useForm({
         mode: 'onBlur',
         resolver: yupResolver(bookingSchema),
     })
@@ -192,29 +197,30 @@ const Booking = (props) => {
     return (
         <BookingStyles>
             <div className='booking'>
-                <p>Do you have a tattoo idea that you would like</p>
+                <p>Send your contact and tattoo idea, and we can begin to bring your vision to life</p>
                 <form onSubmit={handleSubmit(submitAppointment)} className='bookingForm' encType='multipart/form-data'>
                     
                     <input
                         {...register('clientname')}
                         type='text'
-                        onFocus={() => clearErrors('clientname')}
+                        // onFocus={() => clearErrors('clientname')}
                         placeholder='Name'
                     />
                     {errors.clientname ? <div className='formError'>{errors.clientname?.message}</div> : null}
 
                     <input
                         {...register('clientphone')}
-                        type='number'
-                        onFocus={() => clearErrors('clientphone')}
+                        type='tel'
+                        // onFocus={() => clearErrors('clientphone')}
                         placeholder='Phone'
+                        pattern='[0-9]{3}[0-9]{3}[0-9]{4}'
                     />
                     {errors.clientphone ? <div className='formError'>{errors.clientphone?.message}</div> : null}
 
                     <input
                         {...register('clientemail')}
                         type='text'
-                        onFocus={() => clearErrors('clientemail')}
+                        // onFocus={() => clearErrors('clientemail')}
                         placeholder='Email'
                     />
                     {errors.clientemail ? <div className='formError'>{errors.clientemail?.message}</div> : null}
@@ -222,16 +228,16 @@ const Booking = (props) => {
                     <textarea
                         {...register('clientdescription')}
                         type='text'
-                        onFocus={() => clearErrors('clientdescription')}
+                        // onFocus={() => clearErrors('clientdescription')}
                         rows='10'
                         placeholder='Describe your tattoo idea and attach a reference image'
                     />
                     {errors.clientdescription ? <div className='formError'>{errors.clientdescription?.message}</div> : null}
 
-                    <input id='referenceImage'
+                    <input
                         {...register('referenceImage')}
                         type='file'
-                        onFocus={() => clearErrors('referenceImage')}
+                        // onFocus={() => clearErrors('referenceImage')}
                         accept='image/*'
                     />
                     {errors.referenceImage ? <div className='formError'>{errors.referenceImage?.message}</div> : null}

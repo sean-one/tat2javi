@@ -15,7 +15,7 @@ const HeaderStyles = styled.div`
         height: var(--header);
         position: fixed;
         font-family: var(--header-footer-font);
-        color: var(--header-footer-text);
+        color: var(--header-footer-text-color);
         top: 0;
         left: 0;
         background-color: var(--header-footer-background);
