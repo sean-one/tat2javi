@@ -16,7 +16,7 @@ const LandingStyles = styled.div`
         bottom: 0;
         right: 0;
         background-image: url(${t2j});
-        background-color: black;
+        background-color: var(--app-background);
         display: flex;
         flex-direction: column;
         justify-content: center;
@@ -39,7 +39,7 @@ const LandingStyles = styled.div`
         cursor: pointer;
         margin-top: 5rem;
         padding: 1rem 2.5rem;
-        background-color: black;
+        background-color: var(--app-background);
         border: 1px solid white;
         border-radius: 5px;
     }
