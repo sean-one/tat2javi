@@ -1,0 +1,43 @@
+{
+  "files": {
+    "main.css": "/tat2javi/static/css/main.d822d451.chunk.css",
+    "main.js": "/tat2javi/static/js/main.22c71853.chunk.js",
+    "main.js.map": "/tat2javi/static/js/main.22c71853.chunk.js.map",
+    "runtime-main.js": "/tat2javi/static/js/runtime-main.08cc05a4.js",
+    "runtime-main.js.map": "/tat2javi/static/js/runtime-main.08cc05a4.js.map",
+    "static/css/2.47012977.chunk.css": "/tat2javi/static/css/2.47012977.chunk.css",
+    "static/js/2.468c9fd4.chunk.js": "/tat2javi/static/js/2.468c9fd4.chunk.js",
+    "static/js/2.468c9fd4.chunk.js.map": "/tat2javi/static/js/2.468c9fd4.chunk.js.map",
+    "index.html": "/tat2javi/index.html",
+    "static/css/2.47012977.chunk.css.map": "/tat2javi/static/css/2.47012977.chunk.css.map",
+    "static/css/main.d822d451.chunk.css.map": "/tat2javi/static/css/main.d822d451.chunk.css.map",
+    "static/js/2.468c9fd4.chunk.js.LICENSE.txt": "/tat2javi/static/js/2.468c9fd4.chunk.js.LICENSE.txt",
+    "static/media/about_image_link.fd9ca763.png": "/tat2javi/static/media/about_image_link.fd9ca763.png",
+    "static/media/booking_image_link.b300d32a.png": "/tat2javi/static/media/booking_image_link.b300d32a.png",
+    "static/media/javi_folded_crop-w_500.9d131655.png": "/tat2javi/static/media/javi_folded_crop-w_500.9d131655.png",
+    "static/media/portfolio_image_link.16d97bfc.png": "/tat2javi/static/media/portfolio_image_link.16d97bfc.png",
+    "static/media/shop_image_link.ae5fc4ee.png": "/tat2javi/static/media/shop_image_link.ae5fc4ee.png",
+    "static/media/t2j_dark_50.2225ae41.PNG": "/tat2javi/static/media/t2j_dark_50.2225ae41.PNG",
+    "static/media/t2j_white2.266ca9a5.png": "/tat2javi/static/media/t2j_white2.266ca9a5.png",
+    "static/media/tat2javi_portfolio_01.bac04042.png": "/tat2javi/static/media/tat2javi_portfolio_01.bac04042.png",
+    "static/media/tat2javi_portfolio_02.3cca6839.png": "/tat2javi/static/media/tat2javi_portfolio_02.3cca6839.png",
+    "static/media/tat2javi_portfolio_03.82fd77d0.png": "/tat2javi/static/media/tat2javi_portfolio_03.82fd77d0.png",
+    "static/media/tat2javi_portfolio_04.e4a9a40e.png": "/tat2javi/static/media/tat2javi_portfolio_04.e4a9a40e.png",
+    "static/media/tat2javi_portfolio_05.2fd635c8.png": "/tat2javi/static/media/tat2javi_portfolio_05.2fd635c8.png",
+    "static/media/tat2javi_portfolio_06.84e56066.png": "/tat2javi/static/media/tat2javi_portfolio_06.84e56066.png",
+    "static/media/tat2javi_portfolio_07.f0422ec3.png": "/tat2javi/static/media/tat2javi_portfolio_07.f0422ec3.png",
+    "static/media/tat2javi_portfolio_08.b7bf40eb.png": "/tat2javi/static/media/tat2javi_portfolio_08.b7bf40eb.png",
+    "static/media/tat2javi_portfolio_09.b312689c.png": "/tat2javi/static/media/tat2javi_portfolio_09.b312689c.png",
+    "static/media/tat2javi_portfolio_10.bab320df.png": "/tat2javi/static/media/tat2javi_portfolio_10.bab320df.png",
+    "static/media/tat2javi_portfolio_11.f96de01b.png": "/tat2javi/static/media/tat2javi_portfolio_11.f96de01b.png",
+    "static/media/tat2javi_portfolio_12.275c2aa6.png": "/tat2javi/static/media/tat2javi_portfolio_12.275c2aa6.png",
+    "static/media/tat2javi_written_100h.8886853e.PNG": "/tat2javi/static/media/tat2javi_written_100h.8886853e.PNG"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.08cc05a4.js",
+    "static/css/2.47012977.chunk.css",
+    "static/js/2.468c9fd4.chunk.js",
+    "static/css/main.d822d451.chunk.css",
+    "static/js/main.22c71853.chunk.js"
+  ]
+}
