@@ -46,11 +46,11 @@ const ShopItemCardStyles = styled.div`
     }
 
     .shopItemName {
-        color: #0E1111;
+        color: var(--text-color);
         font-size: 1.8rem;
         font-weight: bold;
         border-radius: 5px;
-        border-bottom: 1px solid #0E1111;
+        border-bottom: 1px solid var(--text-color);
     }
     
     .shopItemPrice {

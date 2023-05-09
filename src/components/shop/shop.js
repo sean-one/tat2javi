@@ -9,9 +9,6 @@ const ShopStyles = styled.div`
     .shopWrapper {
         width: 100%;
         padding: 1rem 0 2rem;
-        border: 1px solid red;
-        /* display: flex; */
-        /* flex-direction: column; */
     }
 
     .shopItemList {

@@ -8,6 +8,7 @@ const AboutStyles = styled.div`
     .aboutWrapper {
         display: flex;
         justify-content: space-between;
+        padding: 1rem 0 2rem;
 
         @media only screen and (max-width: 850px) {
             flex-direction: column-reverse;

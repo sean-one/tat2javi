@@ -13,7 +13,11 @@ import { v4 as uuidv4 } from 'uuid'
 // styling
 const BookingStyles = styled.div`
     .booking {
-        padding: 2.5rem 0.25rem;
+        padding: 2.5rem 1rem;
+
+        p {
+            padding: 0 0 1rem;
+        }
     }
 
     .bookingForm {
@@ -27,11 +31,12 @@ const BookingStyles = styled.div`
             border-radius: 5px;
             color: var(--text-color);
             font-size: 1.8rem;
+            line-height: 3.5rem;
             font-family: var(--header-footer-font);
             letter-spacing: 0.1rem;
             border-bottom: 1px solid var(--text-color);
             margin: 0.5rem 0;
-            padding: 0.5rem 1rem;
+            padding-left: 1rem;
             
             ::placeholder {
                 color: var(--header-footer-background);
@@ -110,11 +115,12 @@ const bookingSchema = yup.object().shape({
 })
 
 const Booking = (props) => {
-    let navigate = useNavigate()
+    let navigate = useNavigate();
+
     const { register, handleSubmit, setError, reset, formState: { errors } } = useForm({
         mode: 'onBlur',
         resolver: yupResolver(bookingSchema),
-    })
+    });
 
     const submitAppointment = async (data) => {
         try {
@@ -185,8 +191,6 @@ const Booking = (props) => {
                 }, 3000)
 
             }
-            console.log(response.status)
-
             
         } catch(error) {
             console.log(error)
@@ -203,7 +207,6 @@ const Booking = (props) => {
                     <input
                         {...register('clientname')}
                         type='text'
-                        // onFocus={() => clearErrors('clientname')}
                         placeholder='Name'
                     />
                     {errors.clientname ? <div className='formError'>{errors.clientname?.message}</div> : null}
@@ -211,7 +214,6 @@ const Booking = (props) => {
                     <input
                         {...register('clientphone')}
                         type='tel'
-                        // onFocus={() => clearErrors('clientphone')}
                         placeholder='Phone'
                         pattern='[0-9]{3}[0-9]{3}[0-9]{4}'
                     />
@@ -220,7 +222,6 @@ const Booking = (props) => {
                     <input
                         {...register('clientemail')}
                         type='text'
-                        // onFocus={() => clearErrors('clientemail')}
                         placeholder='Email'
                     />
                     {errors.clientemail ? <div className='formError'>{errors.clientemail?.message}</div> : null}
@@ -228,7 +229,6 @@ const Booking = (props) => {
                     <textarea
                         {...register('clientdescription')}
                         type='text'
-                        // onFocus={() => clearErrors('clientdescription')}
                         rows='10'
                         placeholder='Describe your tattoo idea and attach a reference image'
                     />
@@ -237,7 +237,6 @@ const Booking = (props) => {
                     <input
                         {...register('referenceImage')}
                         type='file'
-                        // onFocus={() => clearErrors('referenceImage')}
                         accept='image/*'
                     />
                     {errors.referenceImage ? <div className='formError'>{errors.referenceImage?.message}</div> : null}
