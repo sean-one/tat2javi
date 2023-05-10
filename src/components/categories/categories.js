@@ -2,9 +2,9 @@ import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-import about_link_image from '../../images/categories/about_image_link.png';
-import portfolio_link_image from '../../images/categories/portfolio_image_link.png';
-import booking_link_image from '../../images/categories/booking_image_link.png';
+import about_link_image from '../../images/categories/about_image_link.JPG';
+import portfolio_link_image from '../../images/categories/portfolio_image_link.JPG';
+import booking_link_image from '../../images/categories/booking_image_link.JPG';
 import shop_link_image from '../../images/categories/shop_image_link.png';
 
 // styling
