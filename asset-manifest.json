@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/tat2javi/static/css/main.d822d451.chunk.css",
-    "main.js": "/tat2javi/static/js/main.22c71853.chunk.js",
-    "main.js.map": "/tat2javi/static/js/main.22c71853.chunk.js.map",
+    "main.js": "/tat2javi/static/js/main.84e62534.chunk.js",
+    "main.js.map": "/tat2javi/static/js/main.84e62534.chunk.js.map",
     "runtime-main.js": "/tat2javi/static/js/runtime-main.08cc05a4.js",
     "runtime-main.js.map": "/tat2javi/static/js/runtime-main.08cc05a4.js.map",
     "static/css/2.47012977.chunk.css": "/tat2javi/static/css/2.47012977.chunk.css",
@@ -12,10 +12,10 @@
     "static/css/2.47012977.chunk.css.map": "/tat2javi/static/css/2.47012977.chunk.css.map",
     "static/css/main.d822d451.chunk.css.map": "/tat2javi/static/css/main.d822d451.chunk.css.map",
     "static/js/2.468c9fd4.chunk.js.LICENSE.txt": "/tat2javi/static/js/2.468c9fd4.chunk.js.LICENSE.txt",
-    "static/media/about_image_link.fd9ca763.png": "/tat2javi/static/media/about_image_link.fd9ca763.png",
-    "static/media/booking_image_link.b300d32a.png": "/tat2javi/static/media/booking_image_link.b300d32a.png",
+    "static/media/about_image_link.ba551a02.JPG": "/tat2javi/static/media/about_image_link.ba551a02.JPG",
+    "static/media/booking_image_link.6785eb23.JPG": "/tat2javi/static/media/booking_image_link.6785eb23.JPG",
     "static/media/javi_folded_crop-w_500.9d131655.png": "/tat2javi/static/media/javi_folded_crop-w_500.9d131655.png",
-    "static/media/portfolio_image_link.16d97bfc.png": "/tat2javi/static/media/portfolio_image_link.16d97bfc.png",
+    "static/media/portfolio_image_link.fe1feb5e.JPG": "/tat2javi/static/media/portfolio_image_link.fe1feb5e.JPG",
     "static/media/shop_image_link.ae5fc4ee.png": "/tat2javi/static/media/shop_image_link.ae5fc4ee.png",
     "static/media/t2j_dark_50.2225ae41.PNG": "/tat2javi/static/media/t2j_dark_50.2225ae41.PNG",
     "static/media/t2j_white2.266ca9a5.png": "/tat2javi/static/media/t2j_white2.266ca9a5.png",
@@ -38,6 +38,6 @@
     "static/css/2.47012977.chunk.css",
     "static/js/2.468c9fd4.chunk.js",
     "static/css/main.d822d451.chunk.css",
-    "static/js/main.22c71853.chunk.js"
+    "static/js/main.84e62534.chunk.js"
   ]
 }
