@@ -14,6 +14,7 @@ import Shop from './components/shop/shop';
 
 import Footer from './components/footer/footer';
 
+require('dotenv').config()
 
 const App = (props) => {
   return (

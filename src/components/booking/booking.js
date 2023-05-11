@@ -105,9 +105,9 @@ const bookingSchema = yup.object().shape({
             }
             return true; // continue validation if file has been selected
         })
-        .test("fileSize", "Image file size is too large", (value) => {
+        .test("fileSize", "Image file size not to exceed 5MB", (value) => {
             if ((value.length > 0) && value[0]) {
-                return value[0].size <= 2 * 1024 * 1024; // 2MB
+                return value[0].size <= 5 * 1024 * 1024; // 5MB
             }
             return false; // fail validation if no file is selected
         })
@@ -190,10 +190,34 @@ const Booking = (props) => {
                     navigate('/tat2javi')
                 }, 3000)
 
+            } else {
+                toast.error('Network connection error', {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 3000 // 3 seconds
+                })
             }
             
         } catch(error) {
-            console.log(error)
+            if(error.name === 'TypeError') {
+                toast.error('Error connecting to server for file upload', {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 3000 // 3 seconds
+                });
+            }
+            
+            if(error.name === 'InvalidAccessKeyId' || error.name === 'SignatureDoesNotMatch') {
+                toast.error('Invalid server credentials', {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 3000 // 3 seconds
+                });
+            }
+            
+            if(error.name === 'AxiosError') {
+                toast.error('Network connection error', {
+                    position: toast.POSITION.TOP_CENTER,
+                    autoClose: 3000 // 3 seconds
+                });
+            }
         }
     }
 
