@@ -1,8 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useForm } from 'react-hook-form';
-import * as yup from 'yup';
-import { yupResolver } from '@hookform/resolvers/yup';
+import { useForm, useController } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
@@ -73,53 +71,66 @@ const BookingStyles = styled.div`
     }
 `;
 
-const bookingSchema = yup.object().shape({
-    clientname: yup
-        .string()
-        .required("Name is required")
-        .max(50, "Name must be less than 50 characters")
-        .matches(/^[a-zA-Z]+(\s[a-zA-Z]+)?$/, { message: "Name must only contain alphabetical characters", excludeEmptyString: true }),
-
-    clientphone: yup
-        .string()
-        .required('Phone number is required')
-        .matches(
-            /^[0-9]{10}$/,
-            "Phone number must be a valid 10-digit number (e.g. 123-456-7890)"
-        ),
-
-    clientemail: yup
-        .string()
-        .email("Email must be a valid email address"),
-    
-    clientdescription: yup
-        .string()
-        .required('Tattoo description is required')
-        .max(250, "Description must be less than 250 characters"),
-
-    referenceImage: yup
-        .mixed()
-        .test('fileAttached', "reference image is required", (value) => {
-            if(value.length === 0) {
-                return false
-            }
-            return true; // continue validation if file has been selected
-        })
-        .test("fileSize", "Image file size not to exceed 5MB", (value) => {
-            if ((value.length > 0) && value[0]) {
-                return value[0].size <= 5 * 1024 * 1024; // 5MB
-            }
-            return false; // fail validation if no file is selected
-        })
-        .required("Please select an image file"),
-})
 
 const Booking = (props) => {
     let navigate = useNavigate();
 
-    const { register, handleSubmit, setError, reset, formState: { errors } } = useForm({
-        mode: 'onBlur',
-        resolver: yupResolver(bookingSchema),
+    const { handleSubmit, control, setError, clearErrors, reset, formState: { errors } } = useForm({
+        mode: 'onSubmit',
+        // resolver: yupResolver(bookingSchema),
+    });
+
+    const { field: clientname } = useController({
+        name: "clientname",
+        control,
+        rules: { required: true }
+    });
+
+    const { field: clientphone } = useController({
+        name: "clientphone",
+        control,
+        rules: {
+        required: true,
+        pattern: {
+            value: /^\d{10}$/,
+            message: "Please enter a valid phone number"
+        }
+        }
+    });
+
+    const { field: clientemail } = useController({
+        name: "clientemail",
+        control,
+        rules: {
+        required: true,
+        pattern: {
+            value: /\S+@\S+\.\S+/,
+            message: "Please enter a valid email address"
+        }
+        }
+    });
+
+    const { field: clientdescription } = useController({
+        name: "clientdescription",
+        control,
+        rules: { required: true }
+    });
+
+    const { field: referenceImage } = useController({
+        name: "referenceImage",
+        control,
+        rules: {
+        required: true,
+        validate: {
+            maxSize: (files) =>
+            files[0].size <= 5 * 1024 * 1024 * 1024 ||
+            "File size should be less than 5GB",
+            allowedTypes: (files) =>
+            /(\.jpg|\.jpeg|\.png|\.webp)$/i.test(files[0].name) ||
+            "Only JPG, JPEG, PNG, and WebP files are allowed"
+        }
+        },
+        defaultValue: ""
     });
 
     const submitAppointment = async (data) => {
@@ -221,7 +232,7 @@ const Booking = (props) => {
         }
     }
 
-
+    console.log(errors)
     return (
         <BookingStyles>
             <div className='booking'>
@@ -229,39 +240,46 @@ const Booking = (props) => {
                 <form onSubmit={handleSubmit(submitAppointment)} className='bookingForm' encType='multipart/form-data'>
                     
                     <input
-                        {...register('clientname')}
+                        {...clientname}
+                        id='clientname'
                         type='text'
                         placeholder='Name'
-                    />
+                        onClick={() => clearErrors('clientname')}
+                        />
                     {errors.clientname ? <div className='formError'>{errors.clientname?.message}</div> : null}
-
                     <input
-                        {...register('clientphone')}
-                        type='tel'
+                        {...clientphone}
+                        id='clientphone'
                         placeholder='Phone'
-                        pattern='[0-9]{3}[0-9]{3}[0-9]{4}'
-                    />
+                        onClick={() => clearErrors('clientphone')}
+                        />
                     {errors.clientphone ? <div className='formError'>{errors.clientphone?.message}</div> : null}
 
                     <input
-                        {...register('clientemail')}
+                        {...clientemail}
+                        id='clientemail'
                         type='text'
                         placeholder='Email'
-                    />
+                        onClick={() => clearErrors('clientemail')}
+                        />
                     {errors.clientemail ? <div className='formError'>{errors.clientemail?.message}</div> : null}
 
                     <textarea
-                        {...register('clientdescription')}
+                        {...clientdescription}
+                        id='clientdescription'
                         type='text'
                         rows='10'
                         placeholder='Describe your tattoo idea and attach a reference image'
-                    />
+                        onClick={() => clearErrors('clientdescription')}
+                        />
                     {errors.clientdescription ? <div className='formError'>{errors.clientdescription?.message}</div> : null}
 
                     <input
-                        {...register('referenceImage')}
+                        {...referenceImage}
+                        id='referenceImage'
                         type='file'
                         accept='image/*'
+                        onClick={() => clearErrors('referenceImage')}
                     />
                     {errors.referenceImage ? <div className='formError'>{errors.referenceImage?.message}</div> : null}
 

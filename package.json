@@ -1,5 +1,4 @@
 {
-  "homepage": "http://sean-one.github.io/tat2javi",
   "name": "tat2javi",
   "version": "0.1.0",
   "private": true,
@@ -41,7 +40,5 @@
     "not ie <= 11",
     "not op_mini all"
   ],
-  "devDependencies": {
-    "gh-pages": "^5.0.0"
-  }
+  "devDependencies": {}
 }
