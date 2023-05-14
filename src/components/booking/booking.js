@@ -1,6 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useForm, useController } from 'react-hook-form';
+import { useForm, Controller } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
@@ -76,64 +76,12 @@ const Booking = (props) => {
     let navigate = useNavigate();
 
     const { handleSubmit, control, setError, clearErrors, reset, formState: { errors } } = useForm({
-        mode: 'onSubmit',
+        mode: 'onBlur',
         // resolver: yupResolver(bookingSchema),
     });
 
-    const { field: clientname } = useController({
-        name: "clientname",
-        control,
-        rules: { required: true }
-    });
-
-    const { field: clientphone } = useController({
-        name: "clientphone",
-        control,
-        rules: {
-        required: true,
-        pattern: {
-            value: /^\d{10}$/,
-            message: "Please enter a valid phone number"
-        }
-        }
-    });
-
-    const { field: clientemail } = useController({
-        name: "clientemail",
-        control,
-        rules: {
-        required: true,
-        pattern: {
-            value: /\S+@\S+\.\S+/,
-            message: "Please enter a valid email address"
-        }
-        }
-    });
-
-    const { field: clientdescription } = useController({
-        name: "clientdescription",
-        control,
-        rules: { required: true }
-    });
-
-    const { field: referenceImage } = useController({
-        name: "referenceImage",
-        control,
-        rules: {
-        required: true,
-        validate: {
-            maxSize: (files) =>
-            files[0].size <= 5 * 1024 * 1024 * 1024 ||
-            "File size should be less than 5GB",
-            allowedTypes: (files) =>
-            /(\.jpg|\.jpeg|\.png|\.webp)$/i.test(files[0].name) ||
-            "Only JPG, JPEG, PNG, and WebP files are allowed"
-        }
-        },
-        defaultValue: ""
-    });
-
     const submitAppointment = async (data) => {
+        console.log('inside submit')
         try {
             // set up required fields and error messages
             const requiredFields = ['clientname', 'clientphone', 'clientdescription']
@@ -232,6 +180,8 @@ const Booking = (props) => {
         }
     }
 
+
+    console.log('errors')
     console.log(errors)
     return (
         <BookingStyles>
@@ -239,49 +189,104 @@ const Booking = (props) => {
                 <p>Send your contact and tattoo idea, and we can begin to bring your vision to life</p>
                 <form onSubmit={handleSubmit(submitAppointment)} className='bookingForm' encType='multipart/form-data'>
                     
-                    <input
-                        {...clientname}
-                        id='clientname'
-                        type='text'
-                        placeholder='Name'
-                        onClick={() => clearErrors('clientname')}
-                        />
-                    {errors.clientname ? <div className='formError'>{errors.clientname?.message}</div> : null}
-                    <input
-                        {...clientphone}
-                        id='clientphone'
-                        placeholder='Phone'
-                        onClick={() => clearErrors('clientphone')}
-                        />
-                    {errors.clientphone ? <div className='formError'>{errors.clientphone?.message}</div> : null}
-
-                    <input
-                        {...clientemail}
-                        id='clientemail'
-                        type='text'
-                        placeholder='Email'
-                        onClick={() => clearErrors('clientemail')}
-                        />
-                    {errors.clientemail ? <div className='formError'>{errors.clientemail?.message}</div> : null}
-
-                    <textarea
-                        {...clientdescription}
-                        id='clientdescription'
-                        type='text'
-                        rows='10'
-                        placeholder='Describe your tattoo idea and attach a reference image'
-                        onClick={() => clearErrors('clientdescription')}
-                        />
-                    {errors.clientdescription ? <div className='formError'>{errors.clientdescription?.message}</div> : null}
-
-                    <input
-                        {...referenceImage}
-                        id='referenceImage'
-                        type='file'
-                        accept='image/*'
-                        onClick={() => clearErrors('referenceImage')}
+                    <Controller name='clientname'
+                        control={control}
+                        defaultValue=''
+                        rules={{
+                            required: 'Please enter your name'
+                        }}
+                        render={({ field }) => (
+                            <input id='clientname'
+                                {...field}
+                                type='text'
+                                onFocus={() => clearErrors('clientname')}
+                                placeholder='Name'
+                            />
+                        )}
                     />
-                    {errors.referenceImage ? <div className='formError'>{errors.referenceImage?.message}</div> : null}
+                    {errors.clientname && <div className='formError'>{errors.clientname?.message}</div>}
+                    
+                    <Controller name="clientphone"
+                        control={control}
+                        defaultValue=''
+                        rules={{
+                            required: 'Please enter your phone number',
+                            pattern: {
+                                value: /^\d{10}$/,
+                                message: "Please enter a valid phone number"
+                            }
+                        }}
+                        render={({ field }) => (
+                            <input id='clientphone'
+                                {...field}
+                                type='text'
+                                onFocus={() => clearErrors('clientphone')}
+                                placeholder='Phone'
+                            />
+                        )}
+                    />
+                    {errors.clientphone && <div className='formError'>{errors.clientphone?.message}</div>}
+
+                    <Controller name="clientemail"
+                        control={control}
+                        defaultValue=''
+                        rules={{
+                            pattern: {
+                                value: /\S+@\S+\.\S+/,
+                                message: "Please enter a valid email address"
+                            }
+                        }}
+                        render={({ field }) => (
+                            <input id='clientemail'
+                                {...field}
+                                type='email'
+                                onFocus={() => clearErrors('clientphone')}
+                                placeholder='Email'
+                            />
+                        )}
+                        
+                    />
+                    {errors.clientemail && <div className='formError'>{errors.clientemail?.message}</div>}
+
+                    <Controller name="clientdescription"
+                        control={control}
+                        defaultValue=''
+                        rules={{ required: 'Please include tattoo description and location' }}
+                        render={({ field }) => (
+                            <textarea id='clientdescription'
+                                {...field}
+                                onFocus={() => clearErrors('clientdescription')}
+                                rows='10'
+                                placeholder='Please describe your idea for a tattoo and your ideas for the location of the tattoo'
+                            />
+                        )}
+                    />
+                    {errors.clientdescription && <div className='formError'>{errors.clientdescription?.message}</div>}
+
+                    <Controller name="referenceImage"
+                        control={control}
+                        defaultValue={null}
+                        rules={{
+                            validate: {
+                                maxSize: (files) =>
+                                    !files || 
+                                    (files[0] && files[0].size <= 5 * 1024 * 1024 * 1024),
+                                allowedTypes: (files) =>
+                                    !files ||
+                                    (files[0] && /(\.jpg|\.jpeg|\.png|\.webp)$/i.test(files[0].name)),
+                            }
+                        }}
+                        render={({ field: { onChange } }) => (
+                            <input
+                                type='file'
+                                onChange={(e) => onChange(e.target.files)}
+                                onFocus={() => clearErrors('referenceImage')}
+                                accept='image/*'
+                            />
+                        )}
+                    />
+                    {(errors.referenceImage && (errors.referenceImage.type === 'maxSize')) && <div className='formError'>File size should be less than 5GB</div>}
+                    {(errors.referenceImage && (errors.referenceImage.type === 'allowedTypes')) && <div className='formError'>Only JPG, JPEG, PNG, and WebP files are allowed</div>}
 
                     <button type='submit'>Submit</button>
                 </form>
