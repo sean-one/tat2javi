@@ -5,6 +5,7 @@ import styled from 'styled-components';
 //fontawesome menu icon
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faBars, faTimes } from '@fortawesome/free-solid-svg-icons';
+import { faInstagram } from '@fortawesome/free-brands-svg-icons';
 
 //images and styling
 import scriptLogo from '../../images/tat2javi_written_100h.PNG';
@@ -128,6 +129,7 @@ const Header = (props) => {
                             {/* <li onClick={navigateToPage} className='links'>calendar</li> */}
                             <li onClick={navigateToPage} className='links'>booking</li>
                             <li onClick={navigateToPage} className='links'>shop</li>
+                            <li className='links'><a href='https://www.instagram.com/tat2javi' target='_blank' rel='noreferrer'><FontAwesomeIcon icon={faInstagram} /> Tat2Javi</a></li>
                         </ul>
                         <div className='mobileIcon' onClick={toggleMenu}>
                             <FontAwesomeIcon icon={openMenu ? faTimes : faBars} size='2x' onClick={props.menuToggle} />

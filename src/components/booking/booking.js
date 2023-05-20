@@ -72,7 +72,8 @@ const BookingStyles = styled.div`
 
     .disabledButton {
         cursor: not-allowed;
-        background-color: red;
+        opacity: 0.4;
+        /* background-color: red; */
     }
 `;
 
@@ -168,7 +169,7 @@ const Booking = (props) => {
             }
             
         } catch(error) {
-            console.log(error)
+            
             if(error.name === 'TypeError') {
                 toast.error('Error connecting to server for file upload', {
                     position: toast.POSITION.TOP_CENTER,
@@ -217,7 +218,7 @@ const Booking = (props) => {
                     {errors.clientname ? <div className='formError'>{errors.clientname?.message}</div> : null}
                     
                     <input {...register('clientphone', {
-                        required: 'need a number bud',
+                        required: 'contact number is required',
                         pattern: {
                             value: /^(\+?1[-.\s]?)?(\()?\d{3}(\))?[-.\s]?\d{3}[-.\s]?\d{4}$/, // US phone pattern validation
                             message: 'Please enter a valid U.S. phone number'
