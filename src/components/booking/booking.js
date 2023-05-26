@@ -1,12 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
-import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
+// import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import axios from 'axios';
-import { v4 as uuidv4 } from 'uuid'
+// import { v4 as uuidv4 } from 'uuid'
 
 // styling
 const BookingStyles = styled.div`
@@ -79,6 +79,7 @@ const BookingStyles = styled.div`
 
 
 const Booking = (props) => {
+    const [ selectedImage, setSelectedImage ] = useState(null)
     let navigate = useNavigate();
 
     const { register, handleSubmit, clearErrors, reset, formState: { errors, isDirty } } = useForm({
@@ -105,52 +106,69 @@ const Booking = (props) => {
         return true;
     };
 
+    const handleImageChange = (e) => {
+        setSelectedImage(e.target.files[0])
+    }
+
     const submitAppointment = async (data) => {
+        console.log(data)
         try {
-            
-            if(data.referenceImage.length > 0) {
-                // set up s3 for image upload
-                const imageToUpload = data.referenceImage[0]
-                const s3 = new S3Client({
-                    region: process.env.REACT_APP_AWS_REGION,
-                    credentials: {
-                        accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
-                        secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
-                    },
-                });
+            const formData = new FormData()
 
-                // create image upload detilas
-                const fileExtension = imageToUpload.name.split('.').pop();
-                const fileName = `${data.clientname}_${uuidv4()}.${fileExtension}`;
-                const params = {
-                    Bucket: process.env.REACT_APP_S3_BUCKET_NAME,
-                    Key: fileName,
-                    Body: imageToUpload,
-                    ContentType: imageToUpload.type,
-                };
+            Object.keys(data).forEach(key => {
+                if(key === 'referenceImage') {
+                    formData.set(key, selectedImage)
+                } else {
+                    formData.append(key, data[key])
+                }
+            })
+            // if(data.referenceImage.length > 0) {
+            //     // set up s3 for image upload
+            //     const imageToUpload = data.referenceImage[0]
+            //     const s3 = new S3Client({
+            //         region: process.env.REACT_APP_AWS_REGION,
+            //         credentials: {
+            //             accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
+            //             secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
+            //         },
+            //     });
 
-                // send image to s3 and create the image s3 url
-                const command = new PutObjectCommand(params);
-                await s3.send(command);
-                const url = `${process.env.REACT_APP_AWS_IMAGE_LINK}${fileName}`;
+            //     // create image upload detilas
+            //     const fileExtension = imageToUpload.name.split('.').pop();
+            //     const fileName = `${data.clientname}_${uuidv4()}.${fileExtension}`;
+            //     const params = {
+            //         Bucket: process.env.REACT_APP_S3_BUCKET_NAME,
+            //         Key: fileName,
+            //         Body: imageToUpload,
+            //         ContentType: imageToUpload.type,
+            //     };
+
+            //     // send image to s3 and create the image s3 url
+            //     const command = new PutObjectCommand(params);
+            //     await s3.send(command);
+            //     const url = `${process.env.REACT_APP_AWS_IMAGE_LINK}${fileName}`;
                 
-                // set the s3 url to the imagelink
-                data['imagelink'] = url
+            //     // set the s3 url to the imagelink
+            //     data['imagelink'] = url
 
-            } else {
-                data['imagelink'] = 'no image attached'
-            }
+            // } else {
+            //     data['imagelink'] = 'no image attached'
+            // }
 
-            // remove the file from the data object before sending to lambda
-            delete data['referenceImage']
+            // // remove the file from the data object before sending to lambda
+            // delete data['referenceImage']
 
             // send to lambda function, sending an email to booking
             const response = await axios({
                 method : 'post',
                 url : process.env.REACT_APP_AWS_LAMBDA,
-                data : {...data},
+                headers: {
+                    'Content-Type': 'multipart/form-data'
+                },
+                data : formData,
             })
 
+            console.log(response)
             if(response.status === 200) {
                 reset()
                 toast.success('Thank you for your message!  You should be contacted soon', {
@@ -185,7 +203,7 @@ const Booking = (props) => {
             }
             
             if(error.name === 'AxiosError') {
-                toast.error('Network connection error', {
+                toast.error(`Network connection error: ${error.message}`, {
                     position: toast.POSITION.TOP_CENTER,
                     autoClose: 3000 // 3 seconds
                 });
@@ -262,6 +280,7 @@ const Booking = (props) => {
                     name='referenceImage'
                     type='file'
                     onFocus={() => clearErrors('referenceImage')}
+                    onChange={handleImageChange}
                     accept='image/*'
                     />
                     {errors.referenceImage && <div className='formError'>{errors.referenceImage?.message}</div>}
