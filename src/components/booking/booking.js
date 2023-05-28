@@ -2,11 +2,10 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
+import Resizer from 'react-image-file-resizer';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
-// import { S3Client, PutObjectCommand } from '@aws-sdk/client-s3';
 import axios from 'axios';
-// import { v4 as uuidv4 } from 'uuid'
 
 // styling
 const BookingStyles = styled.div`
@@ -82,12 +81,14 @@ const Booking = (props) => {
     const [ selectedImage, setSelectedImage ] = useState(null)
     let navigate = useNavigate();
 
-    const { register, handleSubmit, clearErrors, reset, formState: { errors, isDirty } } = useForm({
+    const { register, handleSubmit, clearErrors, reset, watch, formState: { errors, isDirty } } = useForm({
         mode: 'onBlur',
         excludeEmptyString: true,
         shouldFocusError: false,
         shouldDisplayError: true,
     });
+
+    const selectedFile = watch('referenceImage');
 
     const validateImage = (file) => {
         if (file && file[0]) {
@@ -107,65 +108,48 @@ const Booking = (props) => {
     };
 
     const handleImageChange = (e) => {
-        setSelectedImage(e.target.files[0])
+        setSelectedImage(URL.createObjectURL(e.target.files[0]))
     }
 
     const submitAppointment = async (data) => {
         console.log(data)
         try {
-            const formData = new FormData()
-
-            Object.keys(data).forEach(key => {
-                if(key === 'referenceImage') {
-                    formData.set(key, selectedImage)
-                } else {
-                    formData.append(key, data[key])
-                }
-            })
-            // if(data.referenceImage.length > 0) {
-            //     // set up s3 for image upload
-            //     const imageToUpload = data.referenceImage[0]
-            //     const s3 = new S3Client({
-            //         region: process.env.REACT_APP_AWS_REGION,
-            //         credentials: {
-            //             accessKeyId: process.env.REACT_APP_AWS_ACCESS_KEY_ID,
-            //             secretAccessKey: process.env.REACT_APP_AWS_SECRET_ACCESS_KEY,
-            //         },
-            //     });
-
-            //     // create image upload detilas
-            //     const fileExtension = imageToUpload.name.split('.').pop();
-            //     const fileName = `${data.clientname}_${uuidv4()}.${fileExtension}`;
-            //     const params = {
-            //         Bucket: process.env.REACT_APP_S3_BUCKET_NAME,
-            //         Key: fileName,
-            //         Body: imageToUpload,
-            //         ContentType: imageToUpload.type,
-            //     };
-
-            //     // send image to s3 and create the image s3 url
-            //     const command = new PutObjectCommand(params);
-            //     await s3.send(command);
-            //     const url = `${process.env.REACT_APP_AWS_IMAGE_LINK}${fileName}`;
-                
-            //     // set the s3 url to the imagelink
-            //     data['imagelink'] = url
-
-            // } else {
-            //     data['imagelink'] = 'no image attached'
-            // }
-
-            // // remove the file from the data object before sending to lambda
-            // delete data['referenceImage']
-
+            if (selectedFile) {
+                const file = selectedFile[0];
+    
+                Resizer.imageFileResizer(
+                    file,
+                    700, // Max width of 700px
+                    0, // Auto height
+                    'PNG', // Output format as PNG
+                    80,
+                    0,
+                    (resizedImage) => {
+                        const reader = new FileReader();
+                        reader.onload = () => {
+                            const base64String = reader.result.split(',')[1]; // Extract base64 string from Data URL
+                            data.referenceImage = base64String;
+                            // Send data to the server or perform further actions
+                        };
+        
+                        // Convert resizedImage to Blob
+                        const blob = resizedImage.toBlob
+                            ? resizedImage.toBlob()
+                            : new Blob([resizedImage], { type: 'image/png' });
+        
+                        reader.readAsDataURL(blob);
+                    },
+                    'base64' // Use 'base64' for output type
+                );
+            }
             // send to lambda function, sending an email to booking
             const response = await axios({
                 method : 'post',
                 url : process.env.REACT_APP_AWS_LAMBDA,
                 headers: {
-                    'Content-Type': 'multipart/form-data'
+                    'Content-Type': 'application/json'
                 },
-                data : formData,
+                data : data,
             })
 
             console.log(response)
@@ -180,14 +164,15 @@ const Booking = (props) => {
                 }, 3000)
 
             } else {
-                toast.error('Network connection error', {
+                console.log(response)
+                toast.error(`Network connection error`, {
                     position: toast.POSITION.TOP_CENTER,
                     autoClose: 3000 // 3 seconds
                 })
             }
             
         } catch(error) {
-            
+            console.log(error)
             if(error.name === 'TypeError') {
                 toast.error('Error connecting to server for file upload', {
                     position: toast.POSITION.TOP_CENTER,
@@ -273,6 +258,11 @@ const Booking = (props) => {
                         placeholder='Please describe your idea for a tattoo and your ideas for the location of the tattoo'
                     />
                     {errors.clientdescription && <div className='formError'>{errors.clientdescription?.message}</div>}
+
+                    {
+                        selectedImage &&
+                            <img src={selectedImage} alt="Preview" style={{ width: '200px' }} />
+                    }
 
                     <input {...register('referenceImage', {
                         validate: validateImage
