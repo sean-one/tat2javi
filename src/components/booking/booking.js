@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
-import Resizer from 'react-image-file-resizer';
+// import Resizer from 'react-image-file-resizer';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
 import axios from 'axios';
@@ -49,12 +49,12 @@ const BookingStyles = styled.div`
 
     .uploadPreview {
         width: 100%;
-        max-width: 600px
         display: flex;
         justify-content: center;
-
-        canvas {
+        
+        img {
             width: 100%;
+            max-width: 600px;
             display: block;
         }
     }
@@ -78,17 +78,15 @@ const BookingStyles = styled.div`
 
 
 const Booking = (props) => {
-    const [ selectedImage, setSelectedImage ] = useState(null)
+    const [ selectedImage, setSelectedImage ] = useState('')
     let navigate = useNavigate();
 
-    const { register, handleSubmit, clearErrors, reset, watch, formState: { errors, isDirty } } = useForm({
+    const { register, handleSubmit, clearErrors, reset, formState: { errors, isDirty } } = useForm({
         mode: 'onBlur',
         excludeEmptyString: true,
         shouldFocusError: false,
         shouldDisplayError: true,
     });
-
-    const selectedFile = watch('referenceImage');
 
     const validateImage = (file) => {
         if (file && file[0]) {
@@ -107,52 +105,64 @@ const Booking = (props) => {
         return true;
     };
 
-    const handleImageChange = (e) => {
-        setSelectedImage(URL.createObjectURL(e.target.files[0]))
+    const handleImageChange = async (e) => {
+        
+        const file = e.target.files[0];
+    
+        if(file) {
+            try {
+                const resizedImage = await resizeImage(file);
+                setSelectedImage(resizedImage);
+                
+            } catch (error) {
+                console.error('Image resizing failed:', error);
+            }
+        } else {
+            setSelectedImage('');
+        }
     }
 
+    const resizeImage = (file) => {
+        return new Promise((resolve, reject) => {
+            const reader = new FileReader();
+            reader.onload = (event) => {
+                const image = new Image();
+                image.onload = () => {
+                    const canvas = document.createElement('canvas');
+                    const maxWidth = 600;
+                    const scale = maxWidth / image.width;
+                    const height = image.height * scale;
+                    canvas.width = maxWidth;
+                    canvas.height = height;
+                    const ctx = canvas.getContext('2d');
+                    ctx.drawImage(image, 0, 0, maxWidth, height);
+                    const resizedDataURL = canvas.toDataURL('image/png');
+                    resolve(resizedDataURL);
+                };
+                image.onerror = (error) => {
+                    reject(error);
+                }
+                image.src = event.target.result;
+            };
+            reader.onerror = (error) => {
+                reject(error);
+            };
+            reader.readAsDataURL(file)
+        });
+    };
+
     const submitAppointment = async (data) => {
-        console.log(data)
         try {
-            if (selectedFile) {
-                const file = selectedFile[0];
-    
-                Resizer.imageFileResizer(
-                    file,
-                    700, // Max width of 700px
-                    0, // Auto height
-                    'PNG', // Output format as PNG
-                    80,
-                    0,
-                    (resizedImage) => {
-                        const reader = new FileReader();
-                        reader.onload = () => {
-                            const base64String = reader.result.split(',')[1]; // Extract base64 string from Data URL
-                            data.referenceImage = base64String;
-                            // Send data to the server or perform further actions
-                        };
-        
-                        // Convert resizedImage to Blob
-                        const blob = resizedImage.toBlob
-                            ? resizedImage.toBlob()
-                            : new Blob([resizedImage], { type: 'image/png' });
-        
-                        reader.readAsDataURL(blob);
-                    },
-                    'base64' // Use 'base64' for output type
-                );
-            }
             // send to lambda function, sending an email to booking
             const response = await axios({
                 method : 'post',
-                url : process.env.REACT_APP_AWS_LAMBDA,
+                url: 'https://3v54x67ol4.execute-api.us-east-1.amazonaws.com/development/tat2javi_booking',
                 headers: {
                     'Content-Type': 'application/json'
                 },
-                data : data,
+                data : { ...data, referenceImage: selectedImage },
             })
 
-            console.log(response)
             if(response.status === 200) {
                 reset()
                 toast.success('Thank you for your message!  You should be contacted soon', {
@@ -172,7 +182,6 @@ const Booking = (props) => {
             }
             
         } catch(error) {
-            console.log(error)
             if(error.name === 'TypeError') {
                 toast.error('Error connecting to server for file upload', {
                     position: toast.POSITION.TOP_CENTER,
@@ -261,17 +270,19 @@ const Booking = (props) => {
 
                     {
                         selectedImage &&
-                            <img src={selectedImage} alt="Preview" style={{ width: '200px' }} />
+                            <div className='uploadPreview'>
+                                <img src={selectedImage} alt="Preview" />
+                            </div>
                     }
 
                     <input {...register('referenceImage', {
                         validate: validateImage
                     })}
-                    name='referenceImage'
-                    type='file'
-                    onFocus={() => clearErrors('referenceImage')}
-                    onChange={handleImageChange}
-                    accept='image/*'
+                        name='referenceImage'
+                        type='file'
+                        onFocus={() => clearErrors('referenceImage')}
+                        onChange={handleImageChange}
+                        accept='image/*'
                     />
                     {errors.referenceImage && <div className='formError'>{errors.referenceImage?.message}</div>}
 
