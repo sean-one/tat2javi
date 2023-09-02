@@ -15,7 +15,7 @@ const LandingStyles = styled.div`
         left: 0;
         bottom: 0;
         right: 0;
-        background-image: url(${t2j});
+        /* background-image: url(${t2j}); */
         background-color: var(--app-background);
         display: flex;
         flex-direction: column;

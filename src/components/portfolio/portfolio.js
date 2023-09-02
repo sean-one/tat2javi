@@ -13,6 +13,8 @@ import portfolio_image_09 from '../../images/portfolio_images/tat2javi_portfolio
 import portfolio_image_10 from '../../images/portfolio_images/tat2javi_portfolio_10.png'
 import portfolio_image_11 from '../../images/portfolio_images/tat2javi_portfolio_11.png'
 import portfolio_image_12 from '../../images/portfolio_images/tat2javi_portfolio_12.png'
+import portfolio_image_13 from '../../images/portfolio_images/tat2javi_portfolio_13.png'
+import portfolio_image_14 from '../../images/portfolio_images/tat2javi_portfolio_14.png'
 
 // styling
 const PortfolioStyles = styled.div`
@@ -82,6 +84,12 @@ const Portfolio = (props) => {
                 </div>
                 <div className='portfolioImage'>
                     <img src={portfolio_image_12} alt='tat2javi portfolio work' />
+                </div>
+                <div className='portfolioImage'>
+                    <img src={portfolio_image_13} alt='tat2javi portfolio work' />
+                </div>
+                <div className='portfolioImage'>
+                    <img src={portfolio_image_14} alt='tat2javi portfolio work' />
                 </div>
             </div>
             
