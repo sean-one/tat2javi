@@ -1,7 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 
-import merch_coming_soon from '../../images/merch_coming_soon.jpg';
+import merch_coming_soon from '../../images/merch_coming_soon.png';
 
 // import { ShopItems } from './shopItemsList';
 // import ShopItemCard from './shopItemCard';

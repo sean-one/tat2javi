@@ -1,7 +1,8 @@
 import React from 'react';
 import styled, { createGlobalStyle } from 'styled-components';
 
-import t2j from '../images/t2j_dark_50.PNG';
+// import t2j from '../images/t2j_dark_50.PNG';
+import t2j from '../images/t2j_machine-background.png';
 
 const GlobalStyle = createGlobalStyle`
     :root {
@@ -16,7 +17,8 @@ const GlobalStyle = createGlobalStyle`
         --max-container-width: 90rem;
         --input-background: #0E1111;
         
-        --app-background: #0E1111;
+        /* --app-background: #0E1111; */
+        --app-background: #000000;
         --container-background: rgba(14,17,17,0.6);
         --text-color: #E7EBE8;
         --header-footer-background: #757774;

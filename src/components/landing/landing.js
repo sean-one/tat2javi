@@ -1,6 +1,7 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
-import Tat2Javi from '../../images/t2j_white2.png'
+// import Tat2Javi from '../../images/t2j_white2.png'
+import Tat2Javi from '../../images/t2j_blackbox.png'
 import t2j from '../../images/t2j_dark_50.PNG';
 
 import styled from 'styled-components';
