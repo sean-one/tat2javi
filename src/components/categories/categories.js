@@ -6,6 +6,7 @@ import about_link_image from '../../images/categories/about_image_link.JPG';
 import portfolio_link_image from '../../images/categories/portfolio_image_link.JPG';
 import booking_link_image from '../../images/categories/booking_image_link.JPG';
 import shop_link_image from '../../images/categories/shop_image_link.png';
+import calendar_link_image from '../../images/categories/calendar_image_link.png';
 
 // styling
 const CategoriesStyles = styled.div`
@@ -70,6 +71,10 @@ const CategoriesStyles = styled.div`
     .portfolio {
         background-image: url(${portfolio_link_image})
     }
+
+    .calendar {
+        background-image: url(${calendar_link_image});
+    }
     
     .shop {
         background-image: url(${shop_link_image});
@@ -92,9 +97,9 @@ const Categories = (props) => {
                 <div className='category portfolio' onClick={() => navigate('/portfolio')}>
                     <p className='linkHead'>Portfolio</p>
                 </div>
-                {/* <div className='category calendar' onClick={() => navigate('/calendar')}>
+                <div className='category calendar' onClick={() => navigate('/calendar')}>
                     <p className='linkHead'>Calendar</p>
-                </div> */}
+                </div>
                 <div className='category booking' onClick={() => navigate('/booking')}>
                     <p className='linkHead'>Booking</p>
                 </div>

@@ -126,7 +126,7 @@ const Header = (props) => {
                         <ul className={openMenu ? 'menu mobileMenu' : 'menu'}>
                             <li onClick={navigateToPage} className='links'>about</li>
                             <li onClick={navigateToPage} className='links'>portfolio</li>
-                            {/* <li onClick={navigateToPage} className='links'>calendar</li> */}
+                            <li onClick={navigateToPage} className='links'>calendar</li>
                             <li onClick={navigateToPage} className='links'>booking</li>
                             <li onClick={navigateToPage} className='links'>shop</li>
                             <li className='links'><a href='https://www.instagram.com/tat2javi' target='_blank' rel='noreferrer'><FontAwesomeIcon icon={faInstagram} /> Tat2Javi</a></li>
