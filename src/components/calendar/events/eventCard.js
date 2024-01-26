@@ -6,51 +6,63 @@ import styled from 'styled-components';
 const EventCardStyles = styled.div`
     .eventCardWrapper {
         display: flex;
-        padding: 2.5rem;
-        border-radius: 2.5rem;
+        flex-direction: column;
+        padding: 0.5rem;
+        border-radius: 1.5rem;
         border: solid #364652 0.2rem;
         margin-bottom: 3.5rem;
     }
 
+    .eventImage {
+        display: flex;
+
+        img {
+            min-width: 100%;
+        }
+    }
+
     .eventDate {
+        border-radius: 0.5rem;
         display: flex;
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-right: 2rem;
+        padding: 0.15rem 0.75rem;
+        background-color: #364652;
     }
-
+    
     .e_month {
         text-transform: uppercase;
-        letter-spacing: 0.5rem;
-        font-size: 3rem;
-        padding: 1.5rem;
+        font-size: 1.5rem;
         border-bottom: solid #759aab 0.05rem;
     }
 
     .e_day {
-        letter-spacing: 0.3rem;
-        font-size: 5rem;
-        padding: 1.5rem;
+        font-size: 2.5rem;
     }
 
-    .eventDetails {
+    .detailsSection {
         display: flex;
         flex-direction: column;
         justify-content: center;
         text-align: left;
-        padding-left: 2rem;
+    }
+
+    .eventHeaderRow {
+        margin: 0.5rem 0;
+        display: flex;
+        align-items: center;
     }
 
     .e_title h2 {
         text-transform: uppercase;
         font-weight: bold;
-        font-size: 2.8rem;
-        padding: 1rem 0;
+        font-size: 2rem;
+        padding-left: 0.5rem;
     }
 
     .e_location {
-        font-size: 1.6rem;
+        font-size: 1.4rem;
     }
 
     .e_time {
@@ -76,16 +88,18 @@ const EventCard = ({ event }) => {
     return (
         <EventCardStyles>
             <div className='eventCardWrapper'>
-                <div className='eventDate'>
-                    <div className='e_month'>{event?.event_month}</div>
-                    <div className='e_day'>{event?.event_day}</div>
-                </div>
                 <div className='eventImage'>
                     <img src={`${event?.event_image}`} alt='awesome tattoo event' />
                 </div>
-                <div className='eventDetails'>
-                    <div className='e_title'>
-                        <h2>{event?.event_title}</h2>
+                <div className='detailsSection'>
+                    <div className='eventHeaderRow'>
+                        <div className='eventDate'>
+                            <div className='e_month'>{event?.event_month}</div>
+                            <div className='e_day'>{event?.event_day}</div>
+                        </div>
+                        <div className='e_title'>
+                            <h2>{event?.event_title}</h2>
+                        </div>
                     </div>
                     <div className='e_location'>
                         <p>{event?.event_location}</p>
@@ -95,7 +109,7 @@ const EventCard = ({ event }) => {
                     </div>
                     <div className='e_description'>
                         <p>{event?.event_description}</p>
-                        <p>read more...</p>
+                        <a href={event?.event_link} target='blank'>For more info click here.</a>
                     </div>
                 </div>
             </div>
