@@ -85,17 +85,24 @@ const EventCardStyles = styled.div`
 `;
 
 const EventCard = ({ event }) => {
+    const eventDate = new Date(event.event_date)
+    const event_month = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(eventDate);
+    const event_day = eventDate.getUTCDate().toString().padStart(2, '0');
+
     return (
         <EventCardStyles>
             <div className='eventCardWrapper'>
-                <div className='eventImage'>
-                    <img src={`${event?.event_image}`} alt='awesome tattoo event' />
-                </div>
+                {
+                    (event.event_image !== "") &&
+                        <div className='eventImage'>
+                            <img src={`${event?.event_image}`} alt='awesome tattoo event' />
+                        </div>
+                }
                 <div className='detailsSection'>
                     <div className='eventHeaderRow'>
                         <div className='eventDate'>
-                            <div className='e_month'>{event?.event_month}</div>
-                            <div className='e_day'>{event?.event_day}</div>
+                            <div className='e_month'>{event_month}</div>
+                            <div className='e_day'>{event_day}</div>
                         </div>
                         <div className='e_title'>
                             <h2>{event?.event_title}</h2>
@@ -105,11 +112,17 @@ const EventCard = ({ event }) => {
                         <p>{event?.event_location}</p>
                     </div>
                     <div className='e_time'>
-                        <p>{event?.event_time}</p>
+                        {
+                            (event.event_start !== "" && event.event_end !== "") &&
+                                <p>{`${event?.event_start} - ${event?.event_end}`}</p>
+                        }
                     </div>
                     <div className='e_description'>
                         <p>{event?.event_description}</p>
-                        <a href={event?.event_link} target='blank'>For more info click here.</a>
+                        {
+                            (event.event_link !== "") &&
+                                <a href={event?.event_link} target='blank'>For more info click here.</a>
+                        }
                     </div>
                 </div>
             </div>

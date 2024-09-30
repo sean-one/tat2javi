@@ -24,9 +24,9 @@ const Calendar = (props) => {
 
     
     useEffect(() => {
-        const events_google_script = 'https://script.google.com/macros/s/AKfycbwGvmmPJageAo9Bq1Buz8aD9BhrcdiDemkWXc5p2YgYMHcSShi7ARMTnm-1EiYVBdHopQ/exec'
+        const events_endpoint = 'https://script.google.com/macros/s/AKfycbyupujbQpIWx3NJ3t37B4JY0jDaU4ZeK5Kuhzt1ZNryqNTy9QuENWO8Z7yUOVqvu-pA/exec'
 
-        fetch(events_google_script)
+        fetch(events_endpoint)
             .then(response => {
                 if (!response.ok) {
                     throw new Error(`http error! Status: ${response.status}`)
@@ -35,18 +35,28 @@ const Calendar = (props) => {
                 return response.json();
             })
             .then(data => {
-                const today = new Date();
-                today.setHours(0, 0, 0, 0); // start of today
+                // required fields event_date, event_title, event_location & active=true
+                const activeEvents = Array.isArray(data.calendar)
+                    ? data.calendar.filter(event => {
+                        // confirm active event
+                        const isActive = event && event.active === true;
+                        // confirm required fields
+                        const hasRequiredFields =
+                            event.event_date && event.event_date.trim() !== '' && 
+                            event.event_title && event.event_title.trim() !== '' && 
+                            event.event_location && event.event_location.trim() !== '';
+                        // check if event_date is today or in the future
+                        const eventDate = new Date(event.event_date);
+                        const nowToday = new Date();
+                        const hasNotPassed = eventDate.setHours(0, 0, 0, 0) >= nowToday.setHours(0, 0, 0, 0);
 
-                // fiilter out events past and filter any event without 'event_date'
-                const validEvents = data.filter(event => {
-                    if(!event.event_date) return false; // exclude any event without date
-                    const eventDate = new Date(event.event_date);
-                    return eventDate >= today
-                })
-
+                        // filter the events list
+                        return isActive && hasRequiredFields && hasNotPassed;
+                        })
+                    : [];
+                
                 // sort events by date
-                const sortedEvents = validEvents.sort((a, b) => {
+                const sortedEvents = activeEvents.sort((a, b) => {
                     const dateA = new Date(a.event_date);
                     const dateB = new Date(b.event_date);
                     return dateA - dateB;
