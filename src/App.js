@@ -1,6 +1,7 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { Helmet } from 'react-helmet';
+import Tat2Javi_Meta from '../src/images/meta_tag_imgs/og_meta-social.webp';
 
 // components
 import { SiteLayout } from './components/SiteLayout';
@@ -31,7 +32,7 @@ const App = (props) => {
         <meta property='og:title' content='Tat2Javi' />
         <meta property='og:type' content='website' />
         <meta property='og:url' content='https://tat2javi.com' />
-        <meta property='og:image' content='https://tat2javi.com/meta-imgs/og_meta-social.webp' />
+        <meta property='og:image' content={Tat2Javi_Meta} />
         <meta property='og:description' content='tat2javi website' />
       </Helmet>
       <div className='app'>
