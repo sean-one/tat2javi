@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 // components
 import CalendarEvent from './events/eventCard';
@@ -75,6 +76,9 @@ const Calendar = (props) => {
 
     return (
         <CalendarStyles>
+            <Helmet>
+                <title>@Tat2Javi | Calendar</title>
+            </Helmet>
             <div className='calendarWrapper'>
                 <h1>Upcoming Events</h1>
                 <div className='eventsWrapper'>

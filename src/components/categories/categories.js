@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 import styled from 'styled-components';
 
 import about_link_image from '../../images/categories/about_image_link.JPG';
@@ -89,6 +90,9 @@ const Categories = (props) => {
 
     return (
         <CategoriesStyles>
+            <Helmet>
+                <title>@Tat2Javi | Menu</title>
+            </Helmet>
             <div className='categories'>
                 <div className='category about' onClick={() => navigate('/about')}>
                     <p className='linkHead'>About</p>

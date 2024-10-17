@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 import merch_coming_soon from '../../images/merch_coming_soon.png';
 
@@ -60,6 +61,9 @@ const ShopStyles = styled.div`
 const Shop = (props) => {
     return (
         <ShopStyles>
+            <Helmet>
+                <title>@Tat2Javi | Shop</title>
+            </Helmet>
             <div className='shopWrapper'>
                 <div className='comingSoonWrapper'>
                     <div className='comingSoonImage'>

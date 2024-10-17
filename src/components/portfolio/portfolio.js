@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 import portfolio_image_01 from '../../images/portfolio_images/tat2javi_portfolio_01.webp'
 import portfolio_image_02 from '../../images/portfolio_images/tat2javi_portfolio_02.webp'
@@ -45,6 +46,9 @@ const PortfolioStyles = styled.div`
 const Portfolio = (props) => {
     return (
         <PortfolioStyles>
+            <Helmet>
+                <title>@Tat2Javi | Portfolio</title>
+            </Helmet>
             <div className='portfolioGallery'>
                 <div className='portfolioImage'>
                     <img src={portfolio_image_01} alt='tat2javi portfolio work' />

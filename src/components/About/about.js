@@ -1,5 +1,6 @@
 import React from 'react';
 import styled from 'styled-components';
+import { Helmet } from 'react-helmet';
 
 import Javier from '../../images/javi_folded_crop-w_500.png';
 
@@ -53,6 +54,9 @@ const AboutStyles = styled.div`
 const About = (props) => {
     return (
         <AboutStyles>
+            <Helmet>
+                <title>@Tat2Javi | About Me</title>
+            </Helmet>
             <div className='aboutWrapper'>
                 <div className='aboutImage'>
                     <img src={Javier} alt='Tat2Javi standing with his arms crossed' />

@@ -1,5 +1,6 @@
 import React from 'react';
 import { Routes, Route } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
 
 // components
 import { SiteLayout } from './components/SiteLayout';
@@ -20,6 +21,19 @@ require('dotenv').config()
 const App = (props) => {
   return (
     <SiteLayout>
+      <Helmet>
+        <title>@Tat2Javi | California</title>
+        <meta name='description' content='tat2javi website' />
+        <meta name='keywords' content='tat2javi, tat 2 javi, tattoo javi, tattoo, art, ink, lettering, script' />
+        <meta name='robots' content='index, follow' />
+
+        {/* Open Graph tags */}
+        <meta property='og:title' content='Tat2Javi' />
+        <meta property='og:type' content='website' />
+        <meta property='og:url' content='https://tat2javi.com' />
+        <meta property='og:image' content='https://tat2javi.com/meta-imgs/og_meta-social.webp' />
+        <meta property='og:description' content='tat2javi website' />
+      </Helmet>
       <div className='app'>
         <Header />
         <div className='container'>

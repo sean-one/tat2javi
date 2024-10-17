@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useForm } from 'react-hook-form';
 import { ToastContainer, toast } from 'react-toastify';
+import { Helmet } from 'react-helmet';
 // import Resizer from 'react-image-file-resizer';
 import 'react-toastify/dist/ReactToastify.css';
 import styled from 'styled-components';
@@ -208,6 +209,9 @@ const Booking = (props) => {
 
     return (
         <BookingStyles>
+            <Helmet>
+                <title>@Tat2Javi | Booking</title>
+            </Helmet>
             <div className='booking'>
                 <p>Send your contact and tattoo idea, and we can begin to bring your vision to life</p>
                 <form onSubmit={handleSubmit(submitAppointment)} className='bookingForm' encType='multipart/form-data'>
